@@ -1,31 +1,68 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import HomeComponent from "./HomeComponent";
-import AboutComponent from "./AboutComponent";
 import NavBar from "./NavBar";
+import HomeContainer from "./HomeContainer";
+import AboutContainer from "./AboutContainer";
+import ExperienceContainer from "./ExperienceContainer";
+import EducationContainer from "./EducationContainer";
+import ContactContainer from "./ContactContainer";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%',
+    height: "100%",
     // position: 'absolute',
   },
   rest: {
     position: "absolute",
-    top: '101vh',
-  }
-}))
+    top: "101vh",
+  },
+}));
 
 const MainContainer = (props) => {
-  const classes = useStyles()
+  const classes = useStyles();
+
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const experienceRef = useRef(null);
+  const educationRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const refProps = {
+    home: homeRef,
+    about: aboutRef,
+    experience: experienceRef,
+    education: educationRef,
+    contact: contactRef,
+  };
+
+  const [refInView, setRefInView] = useState(null);
+
+  const scrollTo = (ref) => {
+    if (ref) ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  };
 
   return (
     <div className={classes.root}>
-      <NavBar />
-      <HomeComponent />
+      <NavBar refProps={refProps} scrollTo={scrollTo} refInView={refInView} />
+      <HomeContainer
+        refProp={homeRef}
+        refProps={refProps}
+        scrollTo={scrollTo}
+        setRefInView={setRefInView}
+      />
       <div className={classes.rest}>
-        <AboutComponent />
+        <AboutContainer refProp={aboutRef} setRefInView={setRefInView} />
+        <ExperienceContainer
+          refProp={experienceRef}
+          setRefInView={setRefInView}
+        />
+        <EducationContainer
+          refProp={educationRef}
+          setRefInView={setRefInView}
+        />
+        <ContactContainer refProp={contactRef} setRefInView={setRefInView} />
       </div>
-    </div >
+    </div>
   );
 };
 
