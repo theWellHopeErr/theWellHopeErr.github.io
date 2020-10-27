@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { withStyles, createMuiTheme, MuiThemeProvider, makeStyles } from "@material-ui/core/styles";
+import MainContainer from "./components/MainContainer";
+import Footer from "./components/Footer";
+// import particles from './particles.json';
+// import Particles from 'react-particles-js';
 
-function App() {
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#DBE8D4',
+      dark: '#005bc9',
+      light: '#90b6ff'
+    },
+    secondary: {
+      light: '#0066ff',
+      main: '#0044ff',
+      contrastText: '#ffcc00',
+    },
+  },
+  typography: {
+    useNextVariants: true,
+    fontFamily: 'Montserrat',
+  },
+});
+
+const styles = theme => ({
+  app: {
+    textAlign: 'center',
+    fontFamily: 'Montserrat',
+  },
+})
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    color: '#DBE8D4',
+    textAlign: 'center',
+    fontFamily: 'Montserrat',
+  },
+}))
+
+const App = () => {
+  const classes = useStyles()
+  // <Particles params={particles} />
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <MainContainer />
+      </div>
+      {/* <Footer /> */}
+    </MuiThemeProvider>
   );
-}
+};
 
-export default App;
+export default withStyles(styles, { withTheme: true })(App);
