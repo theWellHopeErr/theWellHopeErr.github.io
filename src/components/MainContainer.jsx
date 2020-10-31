@@ -1,24 +1,26 @@
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core";
+
 import NavBar from "./NavBar";
 import HomeContainer from "./HomeContainer";
 import AboutContainer from "./AboutContainer";
 import ExperienceContainer from "./ExperienceContainer";
 import EducationContainer from "./EducationContainer";
 import ContactContainer from "./ContactContainer";
+import Footer from "./Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
-    // position: 'absolute',
   },
   rest: {
     position: "absolute",
     top: "101vh",
+    width: "100vw",
   },
 }));
 
-const MainContainer = (props) => {
+const MainContainer = () => {
   const classes = useStyles();
 
   const homeRef = useRef(null);
@@ -61,6 +63,14 @@ const MainContainer = (props) => {
           setRefInView={setRefInView}
         />
         <ContactContainer refProp={contactRef} setRefInView={setRefInView} />
+        {/* <footer className={classes.footer}>
+          <Typography className={classes.name}>{"Suryarajan S"}</Typography>
+          <CopyrightIcon className={classes.icon} />
+          <Typography className={classes.year}>
+            {new Date().getFullYear()}
+          </Typography>
+        </footer> */}
+        <Footer />
       </div>
     </div>
   );

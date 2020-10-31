@@ -26,9 +26,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: "5%",
   },
-  menuItemDiv: {
-    cursor: "pointer",
-  },
   menuItem: {
     padding: "0 .5rem",
     fontSize: "1em",
@@ -88,7 +85,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 setActive(homeTextRef);
               }}
-              className={classes.menuItemDiv}
+              style={{ cursor: `${scrollY > 20 ? "pointer" : "default"}` }}
             >
               <Typography className={classes.menuItem} ref={homeTextRef}>
                 {"Home"}
@@ -99,7 +96,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
                 scrollTo(refProps.about);
                 setActive(aboutTextRef);
               }}
-              className={classes.menuItemDiv}
+              style={{ cursor: `${scrollY > 20 ? "pointer" : "default"}` }}
             >
               <Typography className={classes.menuItem} ref={aboutTextRef}>
                 {"About"}
@@ -110,7 +107,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
                 scrollTo(refProps.experience);
                 setActive(experienceTextRef);
               }}
-              className={classes.menuItemDiv}
+              style={{ cursor: `${scrollY > 20 ? "pointer" : "default"}` }}
             >
               <Typography className={classes.menuItem} ref={experienceTextRef}>
                 {"Experience"}
@@ -121,7 +118,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
                 scrollTo(refProps.education);
                 setActive(educationTextRef);
               }}
-              className={classes.menuItemDiv}
+              style={{ cursor: `${scrollY > 20 ? "pointer" : "default"}` }}
             >
               <Typography className={classes.menuItem} ref={educationTextRef}>
                 {"Education"}
@@ -132,7 +129,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
                 scrollTo(refProps.contact);
                 setActive(contactTextRef);
               }}
-              className={classes.menuItemDiv}
+              style={{ cursor: `${scrollY > 20 ? "pointer" : "default"}` }}
             >
               <Typography className={classes.menuItem} ref={contactTextRef}>
                 {"Contact"}

@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core/styles";
 import MainContainer from "./components/MainContainer";
 import Scroll from "./components/ScrollToTop";
-// import Footer from "./components/Footer";
+
 // import particles from './particles.json';
 // import Particles from 'react-particles-js';
 

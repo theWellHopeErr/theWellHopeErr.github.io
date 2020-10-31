@@ -1,16 +1,84 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import VisibilitySensor from "react-visibility-sensor";
+import Timeline from "@material-ui/lab/Timeline";
+import TimelineItem from "@material-ui/lab/TimelineItem";
+import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+import TimelineConnector from "@material-ui/lab/TimelineConnector";
+import TimelineContent from "@material-ui/lab/TimelineContent";
+import TimelineDot from "@material-ui/lab/TimelineDot";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Collapse from "@material-ui/core/Collapse";
+import { FaLaptopCode } from "react-icons/fa";
+import clsx from "clsx";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import experience from "../info/experience";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "0 2rem",
+    padding: "1rem 2rem",
     background: "#242a38",
+  },
+  paper: {
+    width: "75%",
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+    },
+  },
+  paperDiv: {
+    padding: "16px 20px",
+  },
+  heading: {
+    fontSize: "1rem",
+    fontWeight: "600",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: ".7rem",
+    },
+  },
+  content: {
+    fontSize: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: ".6rem",
+    },
+  },
+  timelineDot: {
+    padding: ".8rem",
+  },
+  icons: {
+    fontSize: "1.4em",
+  },
+  collapseContent: {
+    fontSize: ".8rem",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  expandButton: {
+    width: "-webkit-fill-available",
+    background: "#f8a736",
+    textAlign: "center",
+    padding: ".25rem 0",
+    borderRadius: "5px",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+  expand: {
+    transform: "rotate(0deg)",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
+  },
+  expandOpen: {
+    transform: "rotate(180deg)",
   },
 }));
 
 const ExperienceContainer = ({ refProp, setRefInView }) => {
   const classes = useStyles();
+  const [expanded, setExpanded] = useState(-1);
   return (
     <VisibilitySensor
       partialVisibility
@@ -19,32 +87,67 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
     >
       <div ref={refProp} className={classes.root}>
         <h2>{"Experience"}</h2>
-        <span className={classes.span}>
-          {`  What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and we    What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and we
-What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and we
-What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and we
-What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and we`}
-        </span>
+        <div className={classes.experience}>
+          <Timeline align="alternate">
+            {experience.map((val, idx) => (
+              <TimelineItem key={idx}>
+                <TimelineSeparator>
+                  <TimelineDot className={classes.timelineDot}>
+                    <FaLaptopCode className={classes.icons} />
+                  </TimelineDot>
+                  {idx + 1 < experience.length && <TimelineConnector />}
+                </TimelineSeparator>
+                <TimelineContent
+                  style={{
+                    textAlign: `${idx & 1 ? "right" : "left"}`,
+                    direction: `${idx & 1 ? "rtl" : "ltr"}`,
+                  }}
+                >
+                  <Paper elevation={3} className={classes.paper}>
+                    <div className={classes.paperDiv}>
+                      <Typography className={classes.heading}>
+                        {val.title}
+                      </Typography>
+                      <Typography
+                        className={classes.content}
+                      >{`${val.startDate} - ${val.endDate}`}</Typography>
+                      <Typography className={classes.content}>
+                        {val.company}
+                      </Typography>
+                      <Typography className={classes.content}>
+                        {val.location}
+                      </Typography>
+                      <Collapse
+                        in={expanded !== -1 && expanded === idx}
+                        timeout="auto"
+                        unmountOnExit
+                      >
+                        <Typography className={classes.collapseContent}>
+                          {val.descriptions.join(" ")}
+                        </Typography>
+                      </Collapse>
+                    </div>
+                    <div
+                      className={classes.expandButton}
+                      onClick={() =>
+                        setExpanded((prevState) =>
+                          prevState === idx ? -1 : idx
+                        )
+                      }
+                    >
+                      <ExpandMoreIcon
+                        className={clsx(classes.expand, {
+                          [classes.expandOpen]:
+                            expanded !== -1 && expanded === idx,
+                        })}
+                      />
+                    </div>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+            ))}
+          </Timeline>
+        </div>
       </div>
     </VisibilitySensor>
   );
