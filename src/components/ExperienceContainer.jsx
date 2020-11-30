@@ -85,70 +85,79 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
       // minTopValue={100}
       onChange={(isVisible) => isVisible && setRefInView("experience")}
     >
-      <div ref={refProp} className={classes.root}>
-        <h2>{"Experience"}</h2>
-        <div className={classes.experience}>
-          <Timeline align="alternate">
-            {experience.map((val, idx) => (
-              <TimelineItem key={idx}>
-                <TimelineSeparator>
-                  <TimelineDot className={classes.timelineDot}>
-                    <FaLaptopCode className={classes.icons} />
-                  </TimelineDot>
-                  {idx + 1 < experience.length && <TimelineConnector />}
-                </TimelineSeparator>
-                <TimelineContent
-                  style={{
-                    textAlign: `${idx & 1 ? "right" : "left"}`,
-                    direction: `${idx & 1 ? "rtl" : "ltr"}`,
-                  }}
-                >
-                  <Paper elevation={3} className={classes.paper}>
-                    <div className={classes.paperDiv}>
-                      <Typography className={classes.heading}>
-                        {val.title}
-                      </Typography>
-                      <Typography
-                        className={classes.content}
-                      >{`${val.startDate} - ${val.endDate}`}</Typography>
-                      <Typography className={classes.content}>
-                        {val.company}
-                      </Typography>
-                      <Typography className={classes.content}>
-                        {val.location}
-                      </Typography>
-                      <Collapse
-                        in={expanded !== -1 && expanded === idx}
-                        timeout="auto"
-                        unmountOnExit
-                      >
-                        <Typography className={classes.collapseContent}>
-                          {val.descriptions.join(" ")}
-                        </Typography>
-                      </Collapse>
-                    </div>
-                    <div
-                      className={classes.expandButton}
-                      onClick={() =>
-                        setExpanded((prevState) =>
-                          prevState === idx ? -1 : idx
-                        )
-                      }
+      {({ isVisible }) => (
+        <div
+          style={{
+            opacity: `${isVisible ? "1" : "0"}`,
+            transition: "all .5s",
+          }}
+        >
+          <div ref={refProp} className={classes.root}>
+            <h2>{"Experience"}</h2>
+            <div className={classes.experience}>
+              <Timeline align="alternate">
+                {experience.map((val, idx) => (
+                  <TimelineItem key={idx}>
+                    <TimelineSeparator>
+                      <TimelineDot className={classes.timelineDot}>
+                        <FaLaptopCode className={classes.icons} />
+                      </TimelineDot>
+                      {idx + 1 < experience.length && <TimelineConnector />}
+                    </TimelineSeparator>
+                    <TimelineContent
+                      style={{
+                        textAlign: `${idx & 1 ? "right" : "left"}`,
+                        direction: `${idx & 1 ? "rtl" : "ltr"}`,
+                      }}
                     >
-                      <ExpandMoreIcon
-                        className={clsx(classes.expand, {
-                          [classes.expandOpen]:
-                            expanded !== -1 && expanded === idx,
-                        })}
-                      />
-                    </div>
-                  </Paper>
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </Timeline>
+                      <Paper elevation={3} className={classes.paper}>
+                        <div className={classes.paperDiv}>
+                          <Typography className={classes.heading}>
+                            {val.title}
+                          </Typography>
+                          <Typography
+                            className={classes.content}
+                          >{`${val.startDate} - ${val.endDate}`}</Typography>
+                          <Typography className={classes.content}>
+                            {val.company}
+                          </Typography>
+                          <Typography className={classes.content}>
+                            {val.location}
+                          </Typography>
+                          <Collapse
+                            in={expanded !== -1 && expanded === idx}
+                            timeout="auto"
+                            unmountOnExit
+                          >
+                            <Typography className={classes.collapseContent}>
+                              {val.descriptions.join(" ")}
+                            </Typography>
+                          </Collapse>
+                        </div>
+                        <div
+                          className={classes.expandButton}
+                          onClick={() =>
+                            setExpanded((prevState) =>
+                              prevState === idx ? -1 : idx
+                            )
+                          }
+                        >
+                          <ExpandMoreIcon
+                            className={clsx(classes.expand, {
+                              [classes.expandOpen]:
+                                expanded !== -1 && expanded === idx,
+                            })}
+                          />
+                        </div>
+                      </Paper>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
+              </Timeline>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </VisibilitySensor>
   );
 };

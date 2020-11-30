@@ -56,44 +56,53 @@ const EducationContainer = ({ refProp, setRefInView }) => {
       // minTopValue={100}
       onChange={(isVisible) => isVisible && setRefInView("education")}
     >
-      <div ref={refProp} className={classes.root}>
-        <div className={classes.education}>
-          <h2>{"Education"}</h2>
-          <Timeline align="alternate">
-            {education.map((val, idx) => (
-              <TimelineItem key={idx}>
-                <TimelineSeparator>
-                  <TimelineDot className={classes.timelineDot}>
-                    <FaUserGraduate className={classes.icons} />
-                  </TimelineDot>
-                  {idx + 1 < education.length && <TimelineConnector />}
-                </TimelineSeparator>
-                <TimelineContent
-                  style={{
-                    textAlign: `${idx & 1 ? "right" : "left"}`,
-                    direction: `${idx & 1 ? "rtl" : "ltr"}`,
-                  }}
-                >
-                  <Paper elevation={3} className={classes.paper}>
-                    <div className={classes.paperDiv}>
-                      <Typography className={classes.heading}>
-                        {val.degree}
-                      </Typography>
-                      <Typography
-                        className={classes.content}
-                      >{`${val.startDate} - ${val.endDate}`}</Typography>
-                      <Typography className={classes.content}>
-                        {val.institute}
-                      </Typography>
-                      {/* <Typography style={{ fontSize: "1rem" }}>{val.score}</Typography> */}
-                    </div>
-                  </Paper>
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </Timeline>
+      {({ isVisible }) => (
+        <div
+          style={{
+            opacity: `${isVisible ? "1" : "0"}`,
+            transition: "all .5s",
+          }}
+        >
+          <div ref={refProp} className={classes.root}>
+            <div className={classes.education}>
+              <h2>{"Education"}</h2>
+              <Timeline align="alternate">
+                {education.map((val, idx) => (
+                  <TimelineItem key={idx}>
+                    <TimelineSeparator>
+                      <TimelineDot className={classes.timelineDot}>
+                        <FaUserGraduate className={classes.icons} />
+                      </TimelineDot>
+                      {idx + 1 < education.length && <TimelineConnector />}
+                    </TimelineSeparator>
+                    <TimelineContent
+                      style={{
+                        textAlign: `${idx & 1 ? "right" : "left"}`,
+                        direction: `${idx & 1 ? "rtl" : "ltr"}`,
+                      }}
+                    >
+                      <Paper elevation={3} className={classes.paper}>
+                        <div className={classes.paperDiv}>
+                          <Typography className={classes.heading}>
+                            {val.degree}
+                          </Typography>
+                          <Typography
+                            className={classes.content}
+                          >{`${val.startDate} - ${val.endDate}`}</Typography>
+                          <Typography className={classes.content}>
+                            {val.institute}
+                          </Typography>
+                          {/* <Typography style={{ fontSize: "1rem" }}>{val.score}</Typography> */}
+                        </div>
+                      </Paper>
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
+              </Timeline>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </VisibilitySensor>
   );
 };

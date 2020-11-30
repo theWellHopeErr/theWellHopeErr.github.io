@@ -13,6 +13,7 @@
     "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
     "emailjs-com": "^2.6.3",
+    "ipapi.co": "^0.3.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
