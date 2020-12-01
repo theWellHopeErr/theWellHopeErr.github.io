@@ -59,7 +59,7 @@ const EducationContainer = ({ refProp, setRefInView }) => {
       {({ isVisible }) => (
         <div
           style={{
-            opacity: `${isVisible ? "1" : "0"}`,
+            opacity: `${isVisible ? "1" : "0.25"}`,
             transition: "all .5s",
           }}
         >
@@ -70,7 +70,16 @@ const EducationContainer = ({ refProp, setRefInView }) => {
                 {education.map((val, idx) => (
                   <TimelineItem key={idx}>
                     <TimelineSeparator>
-                      <TimelineDot className={classes.timelineDot}>
+                      <TimelineDot
+                        className={classes.timelineDot}
+                        style={{
+                          background: `${
+                            new Date().getFullYear() <= val.endDate
+                              ? "#f8a736"
+                              : "#bdbdbd"
+                          }`,
+                        }}
+                      >
                         <FaUserGraduate className={classes.icons} />
                       </TimelineDot>
                       {idx + 1 < education.length && <TimelineConnector />}

@@ -88,7 +88,7 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
       {({ isVisible }) => (
         <div
           style={{
-            opacity: `${isVisible ? "1" : "0"}`,
+            opacity: `${isVisible ? "1" : "0.25"}`,
             transition: "all .5s",
           }}
         >
@@ -99,7 +99,14 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
                 {experience.map((val, idx) => (
                   <TimelineItem key={idx}>
                     <TimelineSeparator>
-                      <TimelineDot className={classes.timelineDot}>
+                      <TimelineDot
+                        className={classes.timelineDot}
+                        style={{
+                          background: `${
+                            val.endDate === "Present" ? "#f8a736" : "#bdbdbd"
+                          }`,
+                        }}
+                      >
                         <FaLaptopCode className={classes.icons} />
                       </TimelineDot>
                       {idx + 1 < experience.length && <TimelineConnector />}

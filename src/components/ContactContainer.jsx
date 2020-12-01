@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#242a38",
     fontWeight: "800",
     fontSize: "1.1rem",
+    transition: "all .3s ease",
     "&:hover": {
       color: "#dbe8d4",
       background: "#242a38",
@@ -199,7 +200,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
       {({ isVisible }) => (
         <div
           style={{
-            opacity: `${isVisible ? "1" : "0"}`,
+            opacity: `${isVisible ? "1" : "0.25"}`,
             transition: "all .5s",
           }}
         >
