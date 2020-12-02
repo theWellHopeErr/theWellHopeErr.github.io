@@ -60,12 +60,14 @@ const EducationContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .5s",
+            transition: "all .4s",
           }}
         >
           <div ref={refProp} className={classes.root}>
             <div className={classes.education}>
-              <h2>{"Education"}</h2>
+              <Typography variant="h4" style={{ fontWeight: "600" }}>
+                {"EDUCATION"}
+              </Typography>
               <Timeline align="alternate">
                 {education.map((val, idx) => (
                   <TimelineItem key={idx}>

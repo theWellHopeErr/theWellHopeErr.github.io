@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import VisibilitySensor from "react-visibility-sensor";
 import Timeline from "@material-ui/lab/Timeline";
@@ -11,7 +12,6 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Collapse from "@material-ui/core/Collapse";
 import { FaLaptopCode } from "react-icons/fa";
-import clsx from "clsx";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import experience from "../info/experience";
@@ -89,11 +89,13 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .5s",
+            transition: "all .4s",
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <h2>{"Experience"}</h2>
+            <Typography variant="h4" style={{ fontWeight: "600" }}>
+              {"EXPERIENCE"}
+            </Typography>
             <div className={classes.experience}>
               <Timeline align="alternate">
                 {experience.map((val, idx) => (

@@ -15,7 +15,7 @@ import Scroll from "./components/ScrollToTop";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#DBE8D4",
+      main: "#ccece6",
       dark: "#005bc9",
       light: "#90b6ff",
     },
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    color: "#DBE8D4",
+    color: "#ccece6",
     textAlign: "center",
     fontFamily: "Montserrat",
   },

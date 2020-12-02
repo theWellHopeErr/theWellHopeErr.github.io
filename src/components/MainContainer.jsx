@@ -8,6 +8,7 @@ import ExperienceContainer from "./ExperienceContainer";
 import EducationContainer from "./EducationContainer";
 import ContactContainer from "./ContactContainer";
 import Footer from "./Footer";
+import ProjectsContainer from "./ProjectsContainer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,7 @@ const MainContainer = () => {
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
   const educationRef = useRef(null);
+  const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
   const refProps = {
@@ -34,13 +36,14 @@ const MainContainer = () => {
     about: aboutRef,
     experience: experienceRef,
     education: educationRef,
+    projects: projectsRef,
     contact: contactRef,
   };
 
   const [refInView, setRefInView] = useState(null);
 
   const scrollTo = (ref) => {
-    if (ref) ref.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    if (ref) ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -62,14 +65,9 @@ const MainContainer = () => {
           refProp={educationRef}
           setRefInView={setRefInView}
         />
+        <ProjectsContainer refProp={projectsRef} setRefInView={setRefInView} />
         <ContactContainer refProp={contactRef} setRefInView={setRefInView} />
-        {/* <footer className={classes.footer}>
-          <Typography className={classes.name}>{"Suryarajan S"}</Typography>
-          <CopyrightIcon className={classes.icon} />
-          <Typography className={classes.year}>
-            {new Date().getFullYear()}
-          </Typography>
-        </footer> */}
+
         <Footer />
       </div>
     </div>

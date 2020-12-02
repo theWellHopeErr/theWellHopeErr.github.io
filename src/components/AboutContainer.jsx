@@ -1,5 +1,8 @@
 import React, { Fragment, useState } from "react";
-import { Avatar, Button, Chip, makeStyles } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import Chip from "@material-ui/core/Chip";
+import { makeStyles } from "@material-ui/core/";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import VisibilitySensor from "react-visibility-sensor";
@@ -82,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
       padding: "1rem 0 0 0",
     },
   },
+  resumeDiv: {
+    margin: "1rem",
+  },
   resumeBtn: {
     width: "9rem",
     height: "3rem",
@@ -105,11 +111,13 @@ const AboutContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .5s",
+            transition: "all .4s",
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <h2>{"About"}</h2>
+            <Typography variant="h4" style={{ fontWeight: "600" }}>
+              {"ABOUT"}
+            </Typography>
 
             <Grid container className={classes.bioContainer}>
               <Grid item xs={12} md={4} className={classes.bioPic}>

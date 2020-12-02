@@ -11,7 +11,7 @@ const ipapi = require("ipapi.co");
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "1rem 2rem",
-    background: "#242a38",
+    background: "#2f3950",
   },
   contactMsg: {
     [theme.breakpoints.up("sm")]: {
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cssOutlinedInput: {
-    color: "#dbe8d4",
+    color: "#ccece6",
     "&$cssFocused $notchedOutline": {
       borderColor: `${theme.palette.primary.main} !important`,
     },
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   cssFocused: {},
   notchedOutline: {
     borderWidth: "1px",
-    borderColor: "#dbe8d4 !important",
+    borderColor: "#ccece6 !important",
   },
   submitBtn: {
     width: "fit-content",
@@ -65,13 +65,13 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid",
     borderRadius: "5px",
     margin: "1rem auto",
-    background: "#dbe8d4",
+    background: "#ccece6",
     color: "#242a38",
     fontWeight: "800",
     fontSize: "1.1rem",
     transition: "all .3s ease",
     "&:hover": {
-      color: "#dbe8d4",
+      color: "#ccece6",
       background: "#242a38",
     },
   },
@@ -201,11 +201,13 @@ const ContactContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .5s",
+            transition: "all .4s",
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <h2>{"Keep in Touch"}</h2>
+            <Typography variant="h4" style={{ fontWeight: "600" }}>
+              {"KEEP IN TOUCH"}
+            </Typography>
             <div className={classes.contact}>
               <Grid container spacing={3}>
                 <Grid item className={classes.contactMsg}>
@@ -235,7 +237,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                           }}
                           InputLabelProps={{
                             style: {
-                              color: "#dbe8d4",
+                              color: "#ccece6",
                             },
                           }}
                           InputProps={{
@@ -268,7 +270,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                           required
                           InputLabelProps={{
                             style: {
-                              color: "#dbe8d4",
+                              color: "#ccece6",
                             },
                           }}
                           InputProps={{
@@ -304,7 +306,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                         }}
                         InputLabelProps={{
                           style: {
-                            color: "#dbe8d4",
+                            color: "#ccece6",
                           },
                         }}
                         InputProps={{
@@ -340,11 +342,11 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                         }}
                         variant="outlined"
                         style={{
-                          color: "#dbe8d4",
+                          color: "#ccece6",
                         }}
                         InputLabelProps={{
                           style: {
-                            color: "#dbe8d4",
+                            color: "#ccece6",
                           },
                         }}
                         InputProps={{
@@ -364,7 +366,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                       style={
                         isSubmitButtonDisabled
                           ? {
-                              color: "#dbe8d4",
+                              color: "#ccece6",
                               background: "#242a38",
                               cursor: "not-allowed",
                             }

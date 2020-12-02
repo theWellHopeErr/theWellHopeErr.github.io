@@ -6,15 +6,7 @@ const skills = [
   },
   {
     label: "Front-end Technologies",
-    tech: [
-      "React",
-      "Redux",
-      "TypeScript",
-      "Electron JS",
-      "VanillaJS",
-      "JQuery",
-      "Bootstrap",
-    ],
+    tech: ["React", "Redux", "Electron JS", "VanillaJS", "JQuery", "Bootstrap"],
     icon: "frontend",
   },
   {
@@ -34,7 +26,14 @@ const skills = [
   },
   {
     label: "Versioning and other tools",
-    tech: ["Git", "Docker", "Heroku", "Nx Workspace", "Cypress.io"],
+    tech: [
+      "Git",
+      "Docker",
+      "Heroku",
+      "TypeScript",
+      "Nx Workspace",
+      "Cypress.io",
+    ],
     icon: "versioning",
   },
 ];

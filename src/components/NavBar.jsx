@@ -40,6 +40,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
   const aboutTextRef = useRef(null);
   const experienceTextRef = useRef(null);
   const educationTextRef = useRef(null);
+  const projectsTextRef = useRef(null);
   const contactTextRef = useRef(null);
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
       about: aboutTextRef,
       experience: experienceTextRef,
       education: educationTextRef,
+      projects: projectsTextRef,
       contact: contactTextRef,
     };
     setActive(refTextProps[refInView]);
@@ -70,6 +72,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
     aboutTextRef.current.style.borderBottom = "0";
     experienceTextRef.current.style.borderBottom = "0";
     educationTextRef.current.style.borderBottom = "0";
+    projectsTextRef.current.style.borderBottom = "0";
     contactTextRef.current.style.borderBottom = "0";
     if (ref) ref.current.style.borderBottom = "2px solid";
   };
@@ -122,6 +125,17 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
             >
               <Typography className={classes.menuItem} ref={educationTextRef}>
                 {"Education"}
+              </Typography>
+            </div>
+            <div
+              onClick={() => {
+                scrollTo(refProps.projects);
+                setActive(projectsTextRef);
+              }}
+              style={{ cursor: `${scrollY > 20 ? "pointer" : "default"}` }}
+            >
+              <Typography className={classes.menuItem} ref={projectsTextRef}>
+                {"Projects"}
               </Typography>
             </div>
             <div
