@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = ({ refProps, refInView, scrollTo }) => {
   const classes = useStyles();
   const [scrollY, setScrollY] = useState(0);
+
   const navbar = useRef(null);
   const homeTextRef = useRef(null);
   const aboutTextRef = useRef(null);
@@ -43,15 +45,22 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
   const projectsTextRef = useRef(null);
   const contactTextRef = useRef(null);
 
+  const theme = useTheme();
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
+
   useEffect(() => {
     window.addEventListener("scroll", () => setScrollY(window.scrollY));
+
     return () =>
       window.removeEventListener("scroll", () => setScrollY(window.scrollY));
   }, []);
 
   useEffect(() => {
-    if (scrollY > 20 && window.matchMedia("(min-width: 600px)"))
-      navbar.current.style.opacity = "1";
+    if (isSmallDevice) navbar.current.style.display = "none";
+  }, [isSmallDevice]);
+
+  useEffect(() => {
+    if (scrollY > 20) navbar.current.style.opacity = "1";
     else navbar.current.style.opacity = "0";
   }, [scrollY]);
 

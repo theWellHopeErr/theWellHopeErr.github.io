@@ -4,7 +4,7 @@ const projects = [
     description:
       "A web application for the classification of canine breeds using a neural network built for cynological analysis of canine breeds with the help of an image URL using TensorFlow. Details about the predicted breed are scraped from the internet using web scrapers. The Machine Learning Model is developed with TensorFlow and Keras Library in Google Colabs.",
     stack: ["TensorFlow", "Keras", "Flask", "Bootstrap"],
-    link: "https://github.com/theWellHopeErr/Cynological-Analyser",
+    code: "https://github.com/theWellHopeErr/Cynological-Analyser",
     img: "assets/img/cynalogical-analyser.png",
     date: "MAR 2020",
   },
@@ -13,7 +13,7 @@ const projects = [
     description:
       "A cross-platform desktop application developed to collect, store, and visualize their student's data for the schools in the state of Sikkim. A secure offline application as the network connectivity in Sikkim is not reliable. Data visualizations with various graphs and analytics provided at the block, district, and state levels. ", //It uses a centralized PostgreSQL database for storing the student's data at the Directorate level and a local SQLite database for storing the required data for the offline connection.",
     stack: ["Electron JS", "Node.js", "ExpressJS", "PostgreSQL", "SQLite"],
-    link: "https://github.com/theWellHopeErr/SG434_418_Teapots",
+    code: "https://github.com/theWellHopeErr/SG434_418_Teapots",
     img: "assets/img/sg434.png",
     date: "AUG 2020",
   },
@@ -30,7 +30,8 @@ const projects = [
     description:
       "A personal portfolio website on Github pages. The Website is designed with React library. It showcases my skills, experience, education, and projects.",
     stack: ["React"],
-    link: "https://github.com/theWellHopeErr/theWellHopeErr.github.io",
+    code: "https://github.com/theWellHopeErr/theWellHopeErr.github.io",
+    site: "https://theWellHopeErr.github.io",
     img: "assets/img/portfolio.png",
     date: "DEC 2020",
   },

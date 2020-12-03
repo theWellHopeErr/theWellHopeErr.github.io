@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#ccece6",
       background: "#242a38",
+      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
     },
   },
   error: {
@@ -219,7 +220,13 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                   </Typography>
                 </Grid>
                 <Grid item className={classes.formDiv}>
-                  <Typography style={{ fontSize: "1.3rem" }}>
+                  <Typography
+                    variant="h5"
+                    style={{
+                      textAlign: "center",
+                      fontWeight: "600",
+                    }}
+                  >
                     {"Say Hi to Me"}
                   </Typography>
                   <form onSubmit={() => console.log("123")}>

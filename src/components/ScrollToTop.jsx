@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "2",
     background: "#242a38",
     borderRadius: "50%",
+    "&:hover": {
+      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+    },
   },
   scrollIcon: {
     width: "2.5rem",

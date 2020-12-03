@@ -1,6 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
@@ -24,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     width: "75%",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
+    },
+    "&:hover": {
+      boxShadow: "0px 0px 25px 2px #f8a736", // 41ffc9ab
     },
   },
   paperDiv: {

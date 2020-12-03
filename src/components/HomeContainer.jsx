@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     height: "200px",
     margin: "auto",
+    "&:hover": {
+      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+    },
   },
   typewriter: {
     display: "flex",
@@ -45,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
   mouse: {
     width: "3rem",
-    paddingTop: "2rem",
     animationDuration: "1s",
     animationDelay: "1s",
     animationName: "bounceInUp",
@@ -104,7 +106,6 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
         </div>
 
         <SocialLinks />
-
         <div onClick={() => scrollTo(refProps.about)}>
           <Image src="assets/img/mouse.gif" className={classes.mouse} />
         </div>

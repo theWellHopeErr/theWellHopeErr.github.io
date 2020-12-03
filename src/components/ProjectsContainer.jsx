@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     transitionDuration: ".3s",
     backfaceVisibility: "hidden",
     "&:hover": {
+      boxShadow: "0px 0px 25px 2px #f8a736", // 41ffc9ab
       filter: "grayscale(0)",
     },
   },
@@ -164,31 +165,41 @@ const ProjectsContainer = ({ refProp, setRefInView }) => {
                         </Typography>
                       </CardContent>
                     </Collapse>
+
                     <CardActions style={{ justifyContent: "center" }}>
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={classes.a}
-                      >
-                        <Button style={{ background: "#f8a736" }}>
-                          <Typography variant="subtitle1">
-                            {"Github"}
-                          </Typography>
-                        </Button>
-                      </a>
+                      {project.code && (
+                        <a
+                          href={project.code}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={classes.a}
+                        >
+                          <Button style={{ background: "#f8a736" }}>
+                            <Typography variant="subtitle1">
+                              {"See Code"}
+                            </Typography>
+                          </Button>
+                        </a>
+                      )}
+                      {project.site && (
+                        <a
+                          href={project.site}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={classes.a}
+                        >
+                          <Button style={{ background: "#f8a736" }}>
+                            <Typography variant="subtitle1">
+                              {"Live"}
+                            </Typography>
+                          </Button>
+                        </a>
+                      )}
                     </CardActions>
                   </Card>
                 </Grid>
               ))}
             </Grid>
-            {/* <Button
-              color="primary"
-              variant="outlined"
-              onClick={() => setMoreProjects((prev) => !prev)}
-            >
-              {moreProjects ? "Show Less" : "Show More"}
-            </Button> */}
           </div>
         </div>
       )}

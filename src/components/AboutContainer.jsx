@@ -106,6 +106,9 @@ const useStyles = makeStyles((theme) => ({
     border: "solid",
     fontWeight: "700",
     fontSize: "1.2rem",
+    "&:hover": {
+      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+    },
   },
 }));
 
