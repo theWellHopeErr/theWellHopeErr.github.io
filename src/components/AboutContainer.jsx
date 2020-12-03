@@ -48,6 +48,11 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "left",
     },
   },
+  surya: {
+    fontWeight: "600",
+    fontFamily: "Josefin Sans",
+    fontSize: "1.2rem",
+  },
   a: {
     textDecoration: "none",
     color: "#f8a736",
@@ -72,6 +77,12 @@ const useStyles = makeStyles((theme) => ({
     border: "1px dashed",
     padding: "5px",
     cursor: "pointer",
+  },
+  chips: {
+    paddingLeft: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "1.5rem",
+    },
   },
   hr1: {
     display: "block",
@@ -140,8 +151,10 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 </Typography>
                 <br />
                 <Typography style={{ fontFamily: "Montserrat" }}>
+                  {"People call me "}
+                  <span className={classes.surya}>{"Surya"}</span>
                   {
-                    "People call me Surya. I am currently pursuing my Bachelors in the stream of Computer Science and Engineering. Since joining the course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."
+                    ". I am currently pursuing my Bachelors in the stream of Computer Science and Engineering. Since joining the course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."
                   }
                 </Typography>
                 <Typography style={{ fontFamily: "Montserrat" }}>
@@ -219,12 +232,9 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 <hr className={classes.hr1} />
                 <br />
 
-                <Typography variant="subtitle1">
-                  {"Full Name: "}
-                  <div />
-                  <Typography variant="h5" className={classes.a}>
-                    {"Suryarajan S"}
-                  </Typography>
+                <Typography variant="subtitle1">{"Full Name: "}</Typography>
+                <Typography variant="h5" className={classes.a}>
+                  {"Suryarajan S"}
                 </Typography>
                 <br />
                 <Typography variant="subtitle1">
@@ -298,10 +308,7 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                       />
                       {skill.label}
                     </Typography>
-                    <Typography
-                      variant="subtitle1"
-                      style={{ paddingLeft: "1rem" }}
-                    >
+                    <Typography variant="subtitle1" className={classes.chips}>
                       {skill.tech.map((o, idx) => (
                         <Chip
                           key={idx}
@@ -317,6 +324,7 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 <br />
               </Grid>
             </Grid>
+
             <div className={classes.resumeDiv}>
               <a
                 href="assets/Resume.pdf"

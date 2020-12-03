@@ -83,10 +83,16 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
         />
 
         <div className={classes.typewriter}>
-          <Typography style={{ fontWeight: "300", paddingRight: ".3rem" }}>
+          <Typography
+            style={{
+              fontSize: "1.2rem",
+              fontWeight: "300",
+              paddingRight: ".3rem",
+            }}
+          >
             {"I am a"}
           </Typography>
-          <Typography style={{ fontWeight: "500" }}>
+          <span style={{ fontSize: "1.2rem", fontWeight: "500" }}>
             <Typewriter
               options={{
                 strings: keyWords,
@@ -94,7 +100,7 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
                 loop: true,
               }}
             />
-          </Typography>
+          </span>
         </div>
 
         <SocialLinks />

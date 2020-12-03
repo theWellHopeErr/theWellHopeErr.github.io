@@ -1,5 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
 import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
@@ -30,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
   timelineDot: {
     padding: ".8rem",
   },
+  missingOppositeContent: {
+    "&:before": {
+      display: "none",
+    },
+  },
   icons: {
     fontSize: "1.4em",
   },
@@ -37,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 const EducationContainer = ({ refProp, setRefInView }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <VisibilitySensor
       partialVisibility
@@ -55,7 +64,10 @@ const EducationContainer = ({ refProp, setRefInView }) => {
               <Typography variant="h4" style={{ fontWeight: "600" }}>
                 {"EDUCATION"}
               </Typography>
-              <Timeline align="alternate">
+              <Timeline
+                align={`${isSmallDevice ? "left" : "alternate"}`}
+                style={{ padding: "6px 1px" }}
+              >
                 {education.map((val, idx) => (
                   <TimelineItem key={idx}>
                     <TimelineSeparator>
@@ -75,21 +87,33 @@ const EducationContainer = ({ refProp, setRefInView }) => {
                     </TimelineSeparator>
                     <TimelineContent
                       style={{
-                        textAlign: `${idx & 1 ? "right" : "left"}`,
-                        direction: `${idx & 1 ? "rtl" : "ltr"}`,
+                        textAlign: `${
+                          !isSmallDevice & (idx & 1) ? "right" : "left"
+                        }`,
+                        direction: `${
+                          !isSmallDevice & (idx & 1) ? "rtl" : "ltr"
+                        }`,
                       }}
                     >
                       <Paper elevation={3} className={classes.paper}>
                         <div className={classes.paperDiv}>
                           <Typography
                             variant="h6"
-                            style={{ fontWeight: "600" }}
+                            style={{
+                              fontWeight: "600",
+                              fontSize: `${isSmallDevice ? "1rem" : "1.25rem"}`,
+                            }}
                           >
-                            {val.degree}
+                            {isSmallDevice ? val.s_degree : val.degree}
                           </Typography>
                           <Typography
                             variant="subtitle2"
-                            style={{ fontWeight: "300" }}
+                            style={{
+                              fontWeight: "300",
+                              fontSize: `${
+                                isSmallDevice ? ".8rem" : "0.875rem"
+                              }`,
+                            }}
                           >{`${
                             val.startDate
                               ? `${val.startDate} - ${val.endDate}`
@@ -97,11 +121,14 @@ const EducationContainer = ({ refProp, setRefInView }) => {
                           }`}</Typography>
                           <Typography
                             variant="subtitle1"
-                            style={{ fontWeight: "400" }}
+                            style={{
+                              fontSize: `${
+                                isSmallDevice ? ".8rem" : "0.875rem"
+                              }`,
+                            }}
                           >
-                            {val.institute}
+                            {isSmallDevice ? val.s_institute : val.institute}
                           </Typography>
-                          {/* <Typography style={{ fontSize: "1rem" }}>{val.score}</Typography> */}
                         </div>
                       </Paper>
                     </TimelineContent>

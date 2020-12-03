@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     padding: "1rem 3rem",
     justifyContent: "center",
+    marginBlockStart: "1rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0rem",
     },
@@ -170,10 +171,7 @@ const ProjectsContainer = ({ refProp, setRefInView }) => {
                         rel="noreferrer"
                         className={classes.a}
                       >
-                        <Button
-                          variant="filled"
-                          style={{ background: "#f8a736" }}
-                        >
+                        <Button style={{ background: "#f8a736" }}>
                           <Typography variant="subtitle1">
                             {"Github"}
                           </Typography>

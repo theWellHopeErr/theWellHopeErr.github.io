@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import VisibilitySensor from "react-visibility-sensor";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
@@ -33,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
   },
   timelineDot: {
     padding: ".8rem",
+  },
+  missingOppositeContent: {
+    "&:before": {
+      display: "none",
+    },
   },
   icons: {
     fontSize: "1.4em",
@@ -69,6 +76,8 @@ const useStyles = makeStyles((theme) => ({
 const ExperienceContainer = ({ refProp, setRefInView }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(-1);
+  const theme = useTheme();
+  const isSmallDevice = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <VisibilitySensor
       partialVisibility
@@ -87,7 +96,10 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
               {"EXPERIENCE"}
             </Typography>
             <div className={classes.experience}>
-              <Timeline align="alternate">
+              <Timeline
+                align={`${isSmallDevice ? "left" : "alternate"}`}
+                style={{ padding: "6px 1px" }}
+              >
                 {experience.map((val, idx) => (
                   <TimelineItem key={idx}>
                     <TimelineSeparator>
@@ -105,39 +117,67 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
                     </TimelineSeparator>
                     <TimelineContent
                       style={{
-                        textAlign: `${idx & 1 ? "right" : "left"}`,
-                        direction: `${idx & 1 ? "rtl" : "ltr"}`,
+                        textAlign: `${
+                          !isSmallDevice & (idx & 1) ? "right" : "left"
+                        }`,
+                        direction: `${
+                          !isSmallDevice & (idx & 1) ? "rtl" : "ltr"
+                        }`,
                       }}
                     >
                       <Paper elevation={3} className={classes.paper}>
                         <div className={classes.paperDiv}>
                           <Typography
                             variant="h6"
-                            style={{ fontWeight: "600" }}
+                            style={{
+                              fontWeight: "600",
+                              fontSize: `${isSmallDevice ? "1rem" : "1.25rem"}`,
+                            }}
                           >
                             {val.title}
                           </Typography>
                           <Typography
                             variant="subtitle2"
-                            style={{ fontWeight: "300" }}
+                            style={{
+                              fontWeight: "300",
+                              fontSize: `${
+                                isSmallDevice ? ".8rem" : "0.875rem"
+                              }`,
+                            }}
                           >{`${val.startDate} - ${val.endDate}`}</Typography>
-                          <Typography variant="subtitle1">
+                          <Typography
+                            variant="subtitle1"
+                            style={{
+                              fontSize: `${
+                                isSmallDevice ? ".8rem" : "0.875rem"
+                              }`,
+                            }}
+                          >
                             {val.company}
                           </Typography>
                           <Typography
                             variant="subtitle1"
-                            style={{ fontWeight: "300" }}
+                            style={{
+                              fontWeight: "300",
+                              display: `${isSmallDevice ? "none" : "block"}`,
+                            }}
                           >
                             {val.location}
                           </Typography>
-                          {val.tech.map((o, idx) => (
-                            <Chip
-                              key={idx}
-                              label={o}
-                              variant="outlined"
-                              style={{ margin: ".2rem" }}
-                            />
-                          ))}
+                          <div
+                            style={{
+                              display: `${isSmallDevice ? "none" : "block"}`,
+                            }}
+                          >
+                            {val.tech.map((o, idx) => (
+                              <Chip
+                                key={idx}
+                                label={o}
+                                variant="outlined"
+                                style={{ margin: ".2rem" }}
+                              />
+                            ))}
+                          </div>
                           <Collapse
                             in={expanded !== -1 && expanded === idx}
                             timeout="auto"

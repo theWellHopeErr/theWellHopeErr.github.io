@@ -6,11 +6,11 @@ import {
   MuiThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import MainContainer from "./components/MainContainer";
 import Scroll from "./components/ScrollToTop";
 
-// import particles from './particles.json';
-// import Particles from 'react-particles-js';
+const breakpoints = createBreakpoints({});
 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +28,17 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
     fontFamily: "Josefin Sans",
+  },
+  overrides: {
+    MuiTimelineItem: {
+      missingOppositeContent: {
+        [breakpoints.down("sm")]: {
+          "&:before": {
+            display: "none",
+          },
+        },
+      },
+    },
   },
 });
 
