@@ -27,14 +27,14 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: "Montserrat",
+    fontFamily: "Josefin Sans",
   },
 });
 
 const styles = (theme) => ({
   app: {
     textAlign: "center",
-    fontFamily: "Montserrat",
+    fontFamily: "Josefin Sans",
   },
 });
 
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     color: "#ccece6",
     textAlign: "center",
-    fontFamily: "Montserrat",
+    fontFamily: "Josefin Sans",
   },
 }));
 

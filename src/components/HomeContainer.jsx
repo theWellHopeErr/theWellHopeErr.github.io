@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "1em",
   },
   greetings: {
+    fontWeight: "300",
     fontSize: "2rem",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.5rem",
@@ -82,8 +83,10 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
         />
 
         <div className={classes.typewriter}>
-          <Typography style={{ paddingRight: ".3rem" }}>{"I am a "}</Typography>
-          <b>
+          <Typography style={{ fontWeight: "300", paddingRight: ".3rem" }}>
+            {"I am a"}
+          </Typography>
+          <Typography style={{ fontWeight: "500" }}>
             <Typewriter
               options={{
                 strings: keyWords,
@@ -91,7 +94,7 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
                 loop: true,
               }}
             />
-          </b>
+          </Typography>
         </div>
 
         <SocialLinks />

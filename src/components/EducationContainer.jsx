@@ -27,19 +27,6 @@ const useStyles = makeStyles((theme) => ({
   paperDiv: {
     padding: "16px 20px",
   },
-  heading: {
-    fontSize: "1rem",
-    fontWeight: "600",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: ".7rem",
-    },
-  },
-  content: {
-    fontSize: "1rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: ".6rem",
-    },
-  },
   timelineDot: {
     padding: ".8rem",
   },
@@ -94,13 +81,24 @@ const EducationContainer = ({ refProp, setRefInView }) => {
                     >
                       <Paper elevation={3} className={classes.paper}>
                         <div className={classes.paperDiv}>
-                          <Typography className={classes.heading}>
+                          <Typography
+                            variant="h6"
+                            style={{ fontWeight: "600" }}
+                          >
                             {val.degree}
                           </Typography>
                           <Typography
-                            className={classes.content}
-                          >{`${val.startDate} - ${val.endDate}`}</Typography>
-                          <Typography className={classes.content}>
+                            variant="subtitle2"
+                            style={{ fontWeight: "300" }}
+                          >{`${
+                            val.startDate
+                              ? `${val.startDate} - ${val.endDate}`
+                              : val.endDate
+                          }`}</Typography>
+                          <Typography
+                            variant="subtitle1"
+                            style={{ fontWeight: "400" }}
+                          >
                             {val.institute}
                           </Typography>
                           {/* <Typography style={{ fontSize: "1rem" }}>{val.score}</Typography> */}

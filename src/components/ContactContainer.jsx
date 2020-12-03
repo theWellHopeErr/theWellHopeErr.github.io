@@ -212,7 +212,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
               <Grid container spacing={3}>
                 <Grid item className={classes.contactMsg}>
                   <AiFillWechat style={{ fontSize: "7rem" }} />
-                  <Typography>
+                  <Typography variant="h6">
                     {
                       "Got a question on the services that I provide? I am just a click away."
                     }

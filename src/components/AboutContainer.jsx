@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem",
     [theme.breakpoints.down("sm")]: {
       textAlign: "left",
+      padding: "0",
       paddingBottom: "1rem",
     },
   },
@@ -80,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
   skills: {
     textAlign: "justify",
-    padding: "1rem",
+    padding: "1rem 0 1rem 3rem",
     [theme.breakpoints.down("sm")]: {
       padding: "1rem 0 0 0",
     },
@@ -129,30 +130,33 @@ const AboutContainer = ({ refProp, setRefInView }) => {
               </Grid>
               <Grid item xs={12} md={8} className={classes.bio}>
                 <Typography
-                  variant="h6"
-                  style={{ textAlign: "center", fontWeight: "600" }}
+                  variant="h5"
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "600",
+                  }}
                 >
                   {"Allow me to introduce myself."}
                 </Typography>
                 <br />
-                <Typography>
+                <Typography style={{ fontFamily: "Montserrat" }}>
                   {
                     "People call me Surya. I am currently pursuing my Bachelors in the stream of Computer Science and Engineering. Since joining the course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."
                   }
                 </Typography>
-                <Typography>
+                <Typography style={{ fontFamily: "Montserrat" }}>
                   {
                     "I am very excited about the advances of Artificial Intelligence in today's technology and wish to learn a lot about AI and ML."
                   }
                 </Typography>
                 <br />
-                <Typography>
+                <Typography style={{ fontFamily: "Montserrat" }}>
                   {
                     "I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my interns, I had to learn new libraries and frameworks used in their companies, and I was able to grasp those concepts quickly and work productively. I have ~2 years of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "
                   }
                 </Typography>
                 <br />
-                <Typography>
+                <Typography style={{ fontFamily: "Montserrat" }}>
                   {"I regularly contribute to "}
                   <a
                     href="https://stackoverflow.com/users/8826642/thewellhopeerr"
@@ -168,7 +172,7 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 </Typography>
 
                 <br />
-                <Typography>
+                <Typography style={{ fontFamily: "Montserrat" }}>
                   {
                     "Oh Yeah, I also give talks. I've conducted several seminars in my college symposiums and several webinars in the COVID-19 lockdown period on various topics like Python Programming, Artificial Intelligence, TensorFlow."
                   }
@@ -180,7 +184,8 @@ const AboutContainer = ({ refProp, setRefInView }) => {
               <Grid item xs={12} md={6} className={classes.profile}>
                 <Typography
                   align="center"
-                  style={{ fontSize: "1.4rem", fontWeight: "600" }}
+                  variant="h5"
+                  style={{ fontWeight: "600" }}
                 >
                   {"PROFILE"}
                 </Typography>
@@ -214,15 +219,15 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 <hr className={classes.hr1} />
                 <br />
 
-                <Typography>
+                <Typography variant="subtitle1">
                   {"Full Name: "}
-                  <Typography></Typography>
-                  <span className={classes.a} style={{ fontSize: "1.25rem" }}>
+                  <div />
+                  <Typography variant="h5" className={classes.a}>
                     {"Suryarajan S"}
-                  </span>
+                  </Typography>
                 </Typography>
                 <br />
-                <Typography>
+                <Typography variant="subtitle1">
                   {"Phone: "}
                   <Typography
                     variant="button"
@@ -236,15 +241,14 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                     className={classes.a}
                     href={"tel:+918122985883"}
                     style={{
-                      fontSize: "1.25rem",
                       display: `${revealPhone ? "block" : "none"}`,
                     }}
                   >
-                    {"+91 8122985883"}
+                    <Typography variant="h5">{"+91 8122985883"}</Typography>
                   </a>
                 </Typography>
                 <br />
-                <Typography>
+                <Typography variant="subtitle1">
                   {"Email: "}
                   <Typography
                     variant="button"
@@ -264,7 +268,9 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                       display: `${revealEmail ? "block" : "none"}`,
                     }}
                   >
-                    {"ssuryarajan@gmail.com"}
+                    <Typography variant="h5">
+                      {"ssuryarajan@gmail.com"}
+                    </Typography>
                   </a>
                 </Typography>
               </Grid>
@@ -272,26 +278,28 @@ const AboutContainer = ({ refProp, setRefInView }) => {
               <Grid item xs={12} md={6} className={classes.skills}>
                 <Typography
                   align="center"
-                  style={{ fontSize: "1.4rem", fontWeight: "600" }}
+                  variant="h5"
+                  style={{ fontWeight: "600" }}
                 >
                   {"SKILLS"}
                 </Typography>
                 <br />
                 {skills.map((skill, idx) => (
                   <Fragment key={idx}>
-                    <Typography
-                      variant="subtitle1"
-                      style={{ fontWeight: "600" }}
-                    >
+                    <Typography variant="h6" style={{ fontWeight: "600" }}>
                       <img
                         src={`assets/img/${skill.icon}.svg`}
                         alt={skill.label}
-                        style={{ width: "1rem", filter: "invert(1)" }}
-                      />{" "}
+                        style={{
+                          width: "1rem",
+                          marginRight: "1rem",
+                          filter: "invert(1)",
+                        }}
+                      />
                       {skill.label}
                     </Typography>
                     <Typography
-                      variant="subtitle2"
+                      variant="subtitle1"
                       style={{ paddingLeft: "1rem" }}
                     >
                       {skill.tech.map((o, idx) => (

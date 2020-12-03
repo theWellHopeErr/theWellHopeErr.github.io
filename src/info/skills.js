@@ -26,14 +26,7 @@ const skills = [
   },
   {
     label: "Versioning and other tools",
-    tech: [
-      "Git",
-      "Docker",
-      "Heroku",
-      "TypeScript",
-      "Nx Workspace",
-      "Cypress.io",
-    ],
+    tech: ["Git", "Docker", "TypeScript", "Nx Workspace", "Cypress.io"],
     icon: "versioning",
   },
 ];

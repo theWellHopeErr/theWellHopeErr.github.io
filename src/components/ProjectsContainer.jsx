@@ -61,9 +61,6 @@ const useStyles = makeStyles((theme) => ({
     padding: ".5rem",
     width: "2rem",
     height: "2rem",
-    // [theme.breakpoints.down("sm")]: {
-    //   display: "none",
-    // },
   },
   expand: {
     transform: "rotate(0deg)",
@@ -79,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
 const ProjectsContainer = ({ refProp, setRefInView }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(-1);
-  // const [moreProjects, setMoreProjects] = useState(false);
   return (
     <VisibilitySensor
       partialVisibility
@@ -159,7 +155,10 @@ const ProjectsContainer = ({ refProp, setRefInView }) => {
                       unmountOnExit
                     >
                       <CardContent style={{ paddingTop: "0" }}>
-                        <Typography variant="body">
+                        <Typography
+                          variant="body"
+                          style={{ fontWeight: "300" }}
+                        >
                           {project.description}
                         </Typography>
                       </CardContent>

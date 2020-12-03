@@ -15,6 +15,7 @@ import { FaLaptopCode } from "react-icons/fa";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import experience from "../info/experience";
+import { Chip } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,19 +31,6 @@ const useStyles = makeStyles((theme) => ({
   paperDiv: {
     padding: "16px 20px",
   },
-  heading: {
-    fontSize: "1rem",
-    fontWeight: "600",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: ".7rem",
-    },
-  },
-  content: {
-    fontSize: "1rem",
-    [theme.breakpoints.down("sm")]: {
-      fontSize: ".6rem",
-    },
-  },
   timelineDot: {
     padding: ".8rem",
   },
@@ -50,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.4em",
   },
   collapseContent: {
-    fontSize: ".8rem",
+    fontFamily: "Montserrat",
+    fontWeight: "300",
+    fontSize: ".9rem",
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
@@ -121,24 +111,43 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
                     >
                       <Paper elevation={3} className={classes.paper}>
                         <div className={classes.paperDiv}>
-                          <Typography className={classes.heading}>
+                          <Typography
+                            variant="h6"
+                            style={{ fontWeight: "600" }}
+                          >
                             {val.title}
                           </Typography>
                           <Typography
-                            className={classes.content}
+                            variant="subtitle2"
+                            style={{ fontWeight: "300" }}
                           >{`${val.startDate} - ${val.endDate}`}</Typography>
-                          <Typography className={classes.content}>
+                          <Typography variant="subtitle1">
                             {val.company}
                           </Typography>
-                          <Typography className={classes.content}>
+                          <Typography
+                            variant="subtitle1"
+                            style={{ fontWeight: "300" }}
+                          >
                             {val.location}
                           </Typography>
+                          {val.tech.map((o, idx) => (
+                            <Chip
+                              key={idx}
+                              label={o}
+                              variant="outlined"
+                              style={{ margin: ".2rem" }}
+                            />
+                          ))}
                           <Collapse
                             in={expanded !== -1 && expanded === idx}
                             timeout="auto"
                             unmountOnExit
+                            style={{ marginTop: ".5rem" }}
                           >
-                            <Typography className={classes.collapseContent}>
+                            <Typography
+                              variant="body"
+                              className={classes.collapseContent}
+                            >
                               {val.descriptions.join(" ")}
                             </Typography>
                           </Collapse>
