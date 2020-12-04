@@ -16,14 +16,13 @@ code {
 
 /* Scrollbar customization */
 body::-webkit-scrollbar {
-  background-color: #fff;
-
+  background-color: #242a38;
   height: 4px;
   width: 0.4rem;
 }
 
 body::-webkit-scrollbar-track {
-  background-color: #fff;
+  background-color: #242a38;
 }
 
 body::-webkit-scrollbar-thumb {
