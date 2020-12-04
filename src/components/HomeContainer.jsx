@@ -3,7 +3,8 @@ import { Avatar, makeStyles, Typography } from "@material-ui/core";
 import Typewriter from "typewriter-effect";
 import VisibilitySensor from "react-visibility-sensor";
 import Image from "react-bootstrap/Image";
-import SocialLinks from "./SocialLinks";
+
+import SocialLinks from "./helperComponents/SocialLinks";
 
 const useStyles = makeStyles((theme) => ({
   root: {

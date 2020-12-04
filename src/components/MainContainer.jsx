@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 
-import NavBar from "./NavBar";
 import HomeContainer from "./HomeContainer";
 import AboutContainer from "./AboutContainer";
 import ExperienceContainer from "./ExperienceContainer";
 import EducationContainer from "./EducationContainer";
 import ContactContainer from "./ContactContainer";
-import Footer from "./Footer";
 import ProjectsContainer from "./ProjectsContainer";
+import NavBar from "./helperComponents/NavBar";
+import Footer from "./helperComponents/Footer";
 
 const useStyles = makeStyles((theme) => ({
   root: {

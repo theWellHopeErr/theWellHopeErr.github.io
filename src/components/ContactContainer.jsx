@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { AiFillWechat } from "react-icons/ai";
 import emailjs from "emailjs-com";
+
 const ipapi = require("ipapi.co");
 
 const useStyles = makeStyles((theme) => ({
@@ -122,6 +123,10 @@ const ContactContainer = ({ refProp, setRefInView }) => {
   const timeoutRef = useRef(null);
 
   useEffect(() => {
+    ipapi.location((loc) => setLocation(loc));
+  }, []);
+
+  useEffect(() => {
     if (mailLimit < 0) {
       setMailStatus({
         color: "#ff0800",
@@ -149,7 +154,6 @@ const ContactContainer = ({ refProp, setRefInView }) => {
         color: "#55ff00",
         message: "Sending...",
       });
-      ipapi.location((loc) => setLocation(loc));
       emailjs
         .send(
           process.env.REACT_APP_SERVICE_ID,

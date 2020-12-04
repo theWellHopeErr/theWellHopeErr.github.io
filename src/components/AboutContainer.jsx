@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from "react";
+import { makeStyles } from "@material-ui/core/";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Chip from "@material-ui/core/Chip";
-import { makeStyles } from "@material-ui/core/";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import VisibilitySensor from "react-visibility-sensor";
+
 import { GiWorld } from "react-icons/gi";
 import { FaGraduationCap, FaLaptopCode } from "react-icons/fa";
 

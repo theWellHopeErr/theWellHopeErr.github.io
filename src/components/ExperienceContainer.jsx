@@ -12,11 +12,11 @@ import TimelineDot from "@material-ui/lab/TimelineDot";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Collapse from "@material-ui/core/Collapse";
-import { FaLaptopCode } from "react-icons/fa";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Chip from "@material-ui/core/Chip";
+import { FaLaptopCode } from "react-icons/fa";
 
 import experience from "../info/experience";
-import { Chip } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
