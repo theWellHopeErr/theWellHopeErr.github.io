@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   name: {
     color: "#a1aab4",
     fontSize: ".8rem",
+    "&::before": {
+      content: '"Suryarajan S"',
+    },
   },
   year: {
     fontSize: ".8rem",
@@ -28,7 +31,7 @@ const Footer = (props) => {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-      <Typography className={classes.name}>{"Suryarajan S"}</Typography>
+      <Typography className={classes.name}></Typography>
       <CopyrightIcon className={classes.icon} />
       <Typography className={classes.year}>
         {new Date().getFullYear()}

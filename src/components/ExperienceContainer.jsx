@@ -23,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 2rem",
     background: "#242a38",
   },
+  experienceText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"EXPERIENCE"`,
+    },
+  },
   paper: {
     width: "75%",
     [theme.breakpoints.down("sm")]: {
@@ -94,9 +100,10 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <Typography variant="h4" style={{ fontWeight: "600" }}>
-              {"EXPERIENCE"}
-            </Typography>
+            <Typography
+              variant="h4"
+              className={classes.experienceText}
+            ></Typography>
             <div className={classes.experience}>
               <Timeline
                 align={`${isSmallDevice ? "left" : "alternate"}`}
@@ -187,7 +194,7 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
                             style={{ marginTop: ".5rem" }}
                           >
                             <Typography
-                              variant="body"
+                              variant="body1"
                               className={classes.collapseContent}
                             >
                               {val.descriptions.join(" ")}

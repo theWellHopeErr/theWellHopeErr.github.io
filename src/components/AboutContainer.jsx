@@ -17,7 +17,70 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 2rem",
   },
   about: {
-    padding: "1rem 2rem",
+    "&::before": {
+      content: '"ABOUT"',
+    },
+  },
+  subtitle: {
+    textAlign: "center",
+    fontWeight: "600",
+    marginBottom: "1rem",
+    "&::before": {
+      content: '"Allow me to introduce myself."',
+    },
+  },
+  bio101: {
+    fontFamily: "Montserrat",
+    "&::before": {
+      content: `"People call me "`,
+    },
+  },
+  surya: {
+    fontWeight: "600",
+    fontFamily: "Josefin Sans",
+    fontSize: "1.2rem",
+    "&::before": {
+      content: '"Surya"',
+    },
+  },
+  bio102: {
+    fontFamily: "Montserrat",
+    "&::before": {
+      content: `". I am currently pursuing my Bachelors in the stream of Computer Science and Engineering. Since joining the course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."`,
+    },
+  },
+  bio2: {
+    fontFamily: "Montserrat",
+    marginBottom: "1rem",
+    "&::before": {
+      content: `"I am very excited about the advances of Artificial Intelligence in today's technology and wish to learn a lot about AI and ML."`,
+    },
+  },
+  bio3: {
+    marginBottom: "1rem",
+    fontFamily: "Montserrat",
+    "&::before": {
+      content: `"I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my interns, I had to learn new libraries and frameworks used in their companies, and I was able to grasp those concepts quickly and work productively. I have ~2 years of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "`,
+    },
+  },
+  bio401: {
+    fontFamily: "Montserrat",
+    "&::before": {
+      content: `"I regularly contribute to "`,
+    },
+  },
+  bio402: {
+    fontFamily: "Montserrat",
+    marginBottom: "1rem",
+    "&::before": {
+      content: `" sharing my knowledge with those in need in the tech community. I recently crossed 1000 reputation points and ranked in the top 0.26% for that month."`,
+    },
+  },
+  bio5: {
+    fontFamily: "Montserrat",
+    "&::before": {
+      content: `"Oh Yeah, I also give talks. I've conducted several seminars in my college symposiums and several webinars in the COVID-19 lockdown period on various topics like Python Programming, Artificial Intelligence, TensorFlow."`,
+    },
   },
   bioContainer: {
     display: "flex",
@@ -48,10 +111,12 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "left",
     },
   },
-  surya: {
-    fontWeight: "600",
-    fontFamily: "Josefin Sans",
-    fontSize: "1.2rem",
+  stackoverflow: {
+    textDecoration: "none",
+    color: "#f8a736",
+    "&::before": {
+      content: `"StackOverflow"`,
+    },
   },
   a: {
     textDecoration: "none",
@@ -62,6 +127,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 10rem",
     [theme.breakpoints.down("sm")]: {
       padding: "0 1%",
+    },
+  },
+  profileText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"PROFILE"`,
     },
   },
   profile: {
@@ -77,6 +148,12 @@ const useStyles = makeStyles((theme) => ({
     border: "1px dashed",
     padding: "5px",
     cursor: "pointer",
+  },
+  skillsText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"SKILLS"`,
+    },
   },
   chips: {
     paddingLeft: "2rem",
@@ -130,9 +207,11 @@ const AboutContainer = ({ refProp, setRefInView }) => {
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <Typography variant="h4" style={{ fontWeight: "600" }}>
-              {"ABOUT"}
-            </Typography>
+            <Typography
+              variant="h4"
+              style={{ fontWeight: "600" }}
+              className={classes.about}
+            ></Typography>
 
             <Grid container className={classes.bioContainer}>
               <Grid item xs={12} md={4} className={classes.bioPic}>
@@ -145,54 +224,28 @@ const AboutContainer = ({ refProp, setRefInView }) => {
               <Grid item xs={12} md={8} className={classes.bio}>
                 <Typography
                   variant="h5"
-                  style={{
-                    textAlign: "center",
-                    fontWeight: "600",
-                  }}
-                >
-                  {"Allow me to introduce myself."}
+                  className={classes.subtitle}
+                ></Typography>
+                <Typography>
+                  <span className={classes.bio101}></span>
+                  <span className={classes.surya}></span>
+                  <span className={classes.bio102}></span>
                 </Typography>
-                <br />
-                <Typography style={{ fontFamily: "Montserrat" }}>
-                  {"People call me "}
-                  <span className={classes.surya}>{"Surya"}</span>
-                  {
-                    ". I am currently pursuing my Bachelors in the stream of Computer Science and Engineering. Since joining the course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."
-                  }
-                </Typography>
-                <Typography style={{ fontFamily: "Montserrat" }}>
-                  {
-                    "I am very excited about the advances of Artificial Intelligence in today's technology and wish to learn a lot about AI and ML."
-                  }
-                </Typography>
-                <br />
-                <Typography style={{ fontFamily: "Montserrat" }}>
-                  {
-                    "I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my interns, I had to learn new libraries and frameworks used in their companies, and I was able to grasp those concepts quickly and work productively. I have ~2 years of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "
-                  }
-                </Typography>
-                <br />
-                <Typography style={{ fontFamily: "Montserrat" }}>
-                  {"I regularly contribute to "}
+                <Typography className={classes.bio2}></Typography>
+                <Typography className={classes.bio3}></Typography>
+                <Typography>
+                  <span className={classes.bio401}></span>
                   <a
                     href="https://stackoverflow.com/users/8826642/thewellhopeerr"
                     target="_blank"
                     rel="noreferrer"
-                    className={classes.a}
+                    className={classes.stackoverflow}
                   >
-                    {"StackOverflow"}
+                    {}
                   </a>
-                  {
-                    " sharing my knowledge with those in need in the tech community. I recently crossed 1000 reputation points and ranked in the top 0.26% for that month."
-                  }
+                  <span className={classes.bio402}></span>
                 </Typography>
-
-                <br />
-                <Typography style={{ fontFamily: "Montserrat" }}>
-                  {
-                    "Oh Yeah, I also give talks. I've conducted several seminars in my college symposiums and several webinars in the COVID-19 lockdown period on various topics like Python Programming, Artificial Intelligence, TensorFlow."
-                  }
-                </Typography>
+                <Typography className={classes.bio5}></Typography>
               </Grid>
             </Grid>
 
@@ -201,10 +254,9 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 <Typography
                   align="center"
                   variant="h5"
+                  className={classes.profileText}
                   style={{ fontWeight: "600" }}
-                >
-                  {"PROFILE"}
-                </Typography>
+                ></Typography>
                 <br />
                 <Typography variant="subtitle1">
                   <span style={{ marginRight: "2%", color: "#00f2ff" }}>
@@ -292,10 +344,8 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 <Typography
                   align="center"
                   variant="h5"
-                  style={{ fontWeight: "600" }}
-                >
-                  {"SKILLS"}
-                </Typography>
+                  className={classes.skillsText}
+                ></Typography>
                 <br />
                 {skills.map((skill, idx) => (
                   <Fragment key={idx}>

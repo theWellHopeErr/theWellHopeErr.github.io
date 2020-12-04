@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 2rem",
     background: "#242a38",
   },
+  projectsText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"PROJECTS"`,
+    },
+  },
   projects: {
     display: "flex",
     padding: "1rem 3rem",
@@ -92,9 +98,10 @@ const ProjectsContainer = ({ refProp, setRefInView }) => {
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <Typography variant="h4" style={{ fontWeight: "600" }}>
-              {"PROJECTS"}
-            </Typography>
+            <Typography
+              variant="h4"
+              className={classes.projectsText}
+            ></Typography>
             <Grid className={classes.projects} container>
               {projects.map((project, idx) => (
                 <Grid
@@ -158,7 +165,7 @@ const ProjectsContainer = ({ refProp, setRefInView }) => {
                     >
                       <CardContent style={{ paddingTop: "0" }}>
                         <Typography
-                          variant="body"
+                          variant="body1"
                           style={{ fontWeight: "300" }}
                         >
                           {project.description}

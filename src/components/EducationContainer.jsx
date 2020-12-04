@@ -19,6 +19,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 2rem",
     background: "#2f3950",
   },
+  educationText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"EDUCATION"`,
+    },
+  },
   paper: {
     width: "75%",
     [theme.breakpoints.down("sm")]: {
@@ -63,9 +69,10 @@ const EducationContainer = ({ refProp, setRefInView }) => {
         >
           <div ref={refProp} className={classes.root}>
             <div className={classes.education}>
-              <Typography variant="h4" style={{ fontWeight: "600" }}>
-                {"EDUCATION"}
-              </Typography>
+              <Typography
+                variant="h4"
+                className={classes.educationText}
+              ></Typography>
               <Timeline
                 align={`${isSmallDevice ? "left" : "alternate"}`}
                 style={{ padding: "6px 1px" }}

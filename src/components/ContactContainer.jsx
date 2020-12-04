@@ -13,6 +13,24 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 2rem",
     background: "#2f3950",
   },
+  contactText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"KEEP IN TOUCH"`,
+    },
+  },
+  subtitleText: {
+    fontWeight: "600",
+    "&::before": {
+      content: `"Say Hi to Me"`,
+    },
+  },
+  sideText: {
+    fontWeight: "500",
+    "&::before": {
+      content: `"Got a question on the services that I provide? I am just a click away."`,
+    },
+  },
   contactMsg: {
     [theme.breakpoints.up("sm")]: {
       width: "40%",
@@ -206,29 +224,25 @@ const ContactContainer = ({ refProp, setRefInView }) => {
           }}
         >
           <div ref={refProp} className={classes.root}>
-            <Typography variant="h4" style={{ fontWeight: "600" }}>
-              {"KEEP IN TOUCH"}
-            </Typography>
+            <Typography
+              variant="h4"
+              className={classes.contactText}
+            ></Typography>
             <div className={classes.contact}>
               <Grid container spacing={3}>
                 <Grid item className={classes.contactMsg}>
                   <AiFillWechat style={{ fontSize: "7rem" }} />
-                  <Typography variant="h6">
-                    {
-                      "Got a question on the services that I provide? I am just a click away."
-                    }
-                  </Typography>
+                  <Typography
+                    variant="h6"
+                    className={classes.sideText}
+                  ></Typography>
                 </Grid>
                 <Grid item className={classes.formDiv}>
                   <Typography
                     variant="h5"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "600",
-                    }}
-                  >
-                    {"Say Hi to Me"}
-                  </Typography>
+                    align="center"
+                    className={classes.subtitleText}
+                  ></Typography>
                   <form onSubmit={() => console.log("123")}>
                     <div className={classes.nameEmailDiv}>
                       <div className={classes.nameInput}>

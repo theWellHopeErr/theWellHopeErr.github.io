@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.5rem",
     },
+    "&::before": {
+      content: '"Hello there👋, I am"',
+    },
   },
   name: {
     fontSize: "4rem",
@@ -30,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "2.5rem",
     },
     fontWeight: "600",
+    "&::before": {
+      content: '"Suryarajan S"',
+    },
   },
   img: {
     width: "200px",
@@ -72,15 +78,14 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
     >
       <div className={classes.root} ref={refProp}>
         <div className={classes.profileCard}>
-          <Typography className={classes.greetings}>
-            {`Hello there👋, I am`}
-          </Typography>
-          <Typography className={classes.name}>{`Suryarajan S`}</Typography>
+          <Typography className={classes.greetings}></Typography>
+          <Typography className={classes.name}></Typography>
         </div>
 
         <Avatar
           alt="Suryarajan S"
           src="assets/img/profile.jpg"
+          component="div"
           className={classes.img}
         />
 

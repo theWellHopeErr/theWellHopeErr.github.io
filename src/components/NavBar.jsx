@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
     top: "0",
-    width: "-webkit-fill-available",
+    width: "100%",
     zIndex: "1",
     opacity: "0",
     transition: "all .3s",
@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2em",
     fontWeight: "600",
     padding: "0 1em",
+    "&::before": {
+      content: '"Suryarajan S"',
+    },
   },
   menu: {
     display: "flex",
@@ -57,6 +60,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
 
   useEffect(() => {
     if (isSmallDevice) navbar.current.style.display = "none";
+    else navbar.current.style.display = "block";
   }, [isSmallDevice]);
 
   useEffect(() => {
@@ -90,7 +94,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
     <div className={classes.root} ref={navbar}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.name}>{"Suryarajan S"}</Typography>
+          <Typography className={classes.name}></Typography>
           <div className={classes.menu}>
             <div
               onClick={() => {
