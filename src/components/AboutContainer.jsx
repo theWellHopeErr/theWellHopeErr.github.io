@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     marginBottom: "1rem",
     "&::before": {
-      content: '"Allow me to introduce myself."',
+      content: '"Who Am I?"',
     },
   },
   bio101: {
