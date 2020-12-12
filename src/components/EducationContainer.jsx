@@ -16,7 +16,8 @@ import education from "../info/education";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "1rem 2rem",
+    padding: "3rem 2rem",
+    transition: "all .3s smooth",
     background: "#2f3950",
   },
   educationText: {
@@ -64,87 +65,82 @@ const EducationContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .4s",
           }}
+          ref={refProp}
+          className={classes.root}
         >
-          <div ref={refProp} className={classes.root}>
-            <div className={classes.education}>
-              <Typography
-                variant="h4"
-                className={classes.educationText}
-              ></Typography>
-              <Timeline
-                align={`${isSmallDevice ? "left" : "alternate"}`}
-                style={{ padding: "6px 1px" }}
-              >
-                {education.map((val, idx) => (
-                  <TimelineItem key={idx}>
-                    <TimelineSeparator>
-                      <TimelineDot
-                        className={classes.timelineDot}
-                        style={{
-                          background: `${
-                            new Date().getFullYear() <= val.endDate
-                              ? "#f8a736"
-                              : "#bdbdbd"
-                          }`,
-                        }}
-                      >
-                        <FaUserGraduate className={classes.icons} />
-                      </TimelineDot>
-                      {idx + 1 < education.length && <TimelineConnector />}
-                    </TimelineSeparator>
-                    <TimelineContent
+          <div className={classes.education}>
+            <Typography
+              variant="h4"
+              className={classes.educationText}
+            ></Typography>
+            <Timeline
+              align={`${isSmallDevice ? "left" : "alternate"}`}
+              style={{ padding: "6px 1px" }}
+            >
+              {education.map((val, idx) => (
+                <TimelineItem key={idx}>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.timelineDot}
                       style={{
-                        textAlign: `${
-                          !isSmallDevice & (idx & 1) ? "right" : "left"
-                        }`,
-                        direction: `${
-                          !isSmallDevice & (idx & 1) ? "rtl" : "ltr"
+                        background: `${
+                          new Date().getFullYear() <= val.endDate
+                            ? "#f8a736"
+                            : "#bdbdbd"
                         }`,
                       }}
                     >
-                      <Paper elevation={3} className={classes.paper}>
-                        <div className={classes.paperDiv}>
-                          <Typography
-                            variant="h6"
-                            style={{
-                              fontWeight: "600",
-                              fontSize: `${isSmallDevice ? "1rem" : "1.25rem"}`,
-                            }}
-                          >
-                            {isSmallDevice ? val.s_degree : val.degree}
-                          </Typography>
-                          <Typography
-                            variant="subtitle2"
-                            style={{
-                              fontWeight: "300",
-                              fontSize: `${
-                                isSmallDevice ? ".8rem" : "0.875rem"
-                              }`,
-                            }}
-                          >{`${
-                            val.startDate
-                              ? `${val.startDate} - ${val.endDate}`
-                              : val.endDate
-                          }`}</Typography>
-                          <Typography
-                            variant="subtitle1"
-                            style={{
-                              fontSize: `${
-                                isSmallDevice ? ".8rem" : "0.875rem"
-                              }`,
-                            }}
-                          >
-                            {isSmallDevice ? val.s_institute : val.institute}
-                          </Typography>
-                        </div>
-                      </Paper>
-                    </TimelineContent>
-                  </TimelineItem>
-                ))}
-              </Timeline>
-            </div>
+                      <FaUserGraduate className={classes.icons} />
+                    </TimelineDot>
+                    {idx + 1 < education.length && <TimelineConnector />}
+                  </TimelineSeparator>
+                  <TimelineContent
+                    style={{
+                      textAlign: `${
+                        !isSmallDevice & (idx & 1) ? "right" : "left"
+                      }`,
+                      direction: `${
+                        !isSmallDevice & (idx & 1) ? "rtl" : "ltr"
+                      }`,
+                    }}
+                  >
+                    <Paper elevation={3} className={classes.paper}>
+                      <div className={classes.paperDiv}>
+                        <Typography
+                          variant="h6"
+                          style={{
+                            fontWeight: "600",
+                            fontSize: `${isSmallDevice ? "1rem" : "1.25rem"}`,
+                          }}
+                        >
+                          {isSmallDevice ? val.s_degree : val.degree}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          style={{
+                            fontWeight: "300",
+                            fontSize: `${isSmallDevice ? ".8rem" : "0.875rem"}`,
+                          }}
+                        >{`${
+                          val.startDate
+                            ? `${val.startDate} - ${val.endDate}`
+                            : val.endDate
+                        }`}</Typography>
+                        <Typography
+                          variant="subtitle1"
+                          style={{
+                            fontSize: `${isSmallDevice ? ".8rem" : "0.875rem"}`,
+                          }}
+                        >
+                          {isSmallDevice ? val.s_institute : val.institute}
+                        </Typography>
+                      </div>
+                    </Paper>
+                  </TimelineContent>
+                </TimelineItem>
+              ))}
+            </Timeline>
           </div>
         </div>
       )}

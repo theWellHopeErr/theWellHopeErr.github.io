@@ -1,7 +1,7 @@
 const skills = [
   {
     label: "Programming Languages",
-    tech: ["Python", "C++"],
+    tech: ["JavaScript", "Python", "TypeScript", "C++"],
     icon: "programming",
   },
   {
@@ -26,7 +26,7 @@ const skills = [
   },
   {
     label: "Versioning and other tools",
-    tech: ["Git", "Docker", "TypeScript", "Nx Workspace", "Cypress.io"],
+    tech: ["Git", "Docker", "Nx Workspace", "Cypress.io"],
     icon: "versioning",
   },
 ];

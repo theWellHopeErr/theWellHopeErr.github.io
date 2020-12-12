@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -15,11 +15,12 @@ import skills from "../info/skills";
 const useStyles = makeStyles((theme) => ({
   root: {
     background: "#2f3950",
-    padding: "1rem 2rem",
+    padding: "3rem 2rem",
+    transition: "all .3s smooth",
   },
   about: {
     "&::before": {
-      content: '"ABOUT"',
+      content: '"ABOUT ME"',
     },
   },
   subtitle: {
@@ -57,11 +58,20 @@ const useStyles = makeStyles((theme) => ({
       content: `"I am very excited about the advances of Artificial Intelligence in today's technology and wish to learn a lot about AI and ML."`,
     },
   },
-  bio3: {
+  bio301: {
     marginBottom: "1rem",
     fontFamily: "Montserrat",
     "&::before": {
-      content: `"I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my interns, I had to learn new libraries and frameworks used in their companies, and I was able to grasp those concepts quickly and work productively. I have ~2 years of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "`,
+      content: `"I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my interns, I had to learn new libraries and frameworks used in their companies, and I was able to grasp those concepts quickly and work productively. "`,
+    },
+  },
+  bio302: {
+    marginBottom: "1rem",
+    fontFamily: "Montserrat",
+    [theme.breakpoints.up("sm")]: {
+      "&::before": {
+        content: `"I have ~2 years of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "`,
+      },
     },
   },
   bio401: {
@@ -79,8 +89,10 @@ const useStyles = makeStyles((theme) => ({
   },
   bio5: {
     fontFamily: "Montserrat",
-    "&::before": {
-      content: `"Oh Yeah, I also give talks. I've conducted several seminars in my college symposiums and several webinars in the COVID-19 lockdown period on various topics like Python Programming, Artificial Intelligence, TensorFlow."`,
+    [theme.breakpoints.up("sm")]: {
+      "&::before": {
+        content: `"Oh Yeah, I also give talks. I've conducted several seminars in my college symposiums and several webinars in the COVID-19 lockdown period on various topics like Python Programming, Artificial Intelligence, TensorFlow."`,
+      },
     },
   },
   bioContainer: {
@@ -162,6 +174,22 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "1.5rem",
     },
   },
+  chipsDiv: {
+    marginBottom: ".5rem",
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: ".2rem",
+    },
+  },
+  chip: {
+    margin: "0 .5rem",
+    "&:hover": {
+      background: "#ccece6",
+      color: "#242a38",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 .2rem .2rem 0",
+    },
+  },
   hr1: {
     display: "block",
     [theme.breakpoints.down("sm")]: {
@@ -185,7 +213,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "700",
     fontSize: "1.2rem",
     "&:hover": {
-      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+      boxShadow: "0px 0px 10px 2px #41ffc9ab", // f8a736
     },
   },
 }));
@@ -202,199 +230,202 @@ const AboutContainer = ({ refProp, setRefInView }) => {
     >
       {({ isVisible }) => (
         <div
+          ref={refProp}
+          className={classes.root}
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .4s",
           }}
         >
-          <div ref={refProp} className={classes.root}>
-            <Typography
-              variant="h4"
-              style={{ fontWeight: "600" }}
-              className={classes.about}
-            ></Typography>
+          <Typography
+            variant="h4"
+            style={{ fontWeight: "600" }}
+            className={classes.about}
+          ></Typography>
 
-            <Grid container className={classes.bioContainer}>
-              <Grid item xs={12} md={4} className={classes.bioPic}>
-                <Avatar
-                  alt="Suryarajan S"
-                  src="assets/img/profile.jpg"
-                  className={classes.img}
-                />
-              </Grid>
-              <Grid item xs={12} md={8} className={classes.bio}>
-                <Typography
-                  variant="h5"
-                  className={classes.subtitle}
-                ></Typography>
-                <Typography>
-                  <span className={classes.bio101}></span>
-                  <span className={classes.surya}></span>
-                  <span className={classes.bio102}></span>
-                </Typography>
-                <Typography className={classes.bio2}></Typography>
-                <Typography className={classes.bio3}></Typography>
-                <Typography>
-                  <span className={classes.bio401}></span>
-                  <a
-                    href="https://stackoverflow.com/users/8826642/thewellhopeerr"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={classes.stackoverflow}
-                  >
-                    {}
-                  </a>
-                  <span className={classes.bio402}></span>
-                </Typography>
-                <Typography className={classes.bio5}></Typography>
-              </Grid>
+          <Grid container className={classes.bioContainer}>
+            <Grid item xs={12} md={4} className={classes.bioPic}>
+              <Avatar
+                alt="Suryarajan S"
+                src="assets/img/profile.jpg"
+                className={classes.img}
+              />
             </Grid>
+            <Grid item xs={12} md={8} className={classes.bio}>
+              <Typography
+                variant="h5"
+                className={classes.subtitle}
+              ></Typography>
+              <Typography>
+                <span className={classes.bio101}></span>
+                <span className={classes.surya}></span>
+                <span className={classes.bio102}></span>
+              </Typography>
+              <Typography className={classes.bio2}></Typography>
+              <Typography>
+                <span className={classes.bio301}></span>
+                <span className={classes.bio302}></span>
+              </Typography>
 
-            <Grid container className={classes.profileBox}>
-              <Grid item xs={12} md={6} className={classes.profile}>
-                <Typography
-                  align="center"
-                  variant="h5"
-                  className={classes.profileText}
-                  style={{ fontWeight: "600" }}
-                ></Typography>
-                <br />
-                <Typography variant="subtitle1">
-                  <span style={{ marginRight: "2%", color: "#00f2ff" }}>
-                    <GiWorld />
-                  </span>
-                  {
-                    "Full Stack Developer, Web Developer, and Computer Science Engineer."
-                  }
-                </Typography>
-                <br />
-                <Typography variant="subtitle1">
-                  <span style={{ marginRight: "2%", color: "#51bf53" }}>
-                    <FaGraduationCap />
-                  </span>
-                  {
-                    "Bachelors in Computer Science and Engineering, Tamil Nadu, India."
-                  }
-                </Typography>
-                <br />
-                <Typography variant="subtitle1">
-                  <span style={{ marginRight: "2%", color: "#ef3b36" }}>
-                    <FaLaptopCode />
-                  </span>
-                  {"1+ years Industrial Experience"}
-                </Typography>
-
-                <br />
-                <hr className={classes.hr1} />
-                <br />
-
-                <Typography variant="subtitle1">{"Full Name: "}</Typography>
-                <Typography variant="h5" className={classes.a}>
-                  {"Suryarajan S"}
-                </Typography>
-                <br />
-                <Typography variant="subtitle1">
-                  {"Phone: "}
-                  <Typography
-                    variant="button"
-                    className={classes.clickToReveal}
-                    style={revealPhone ? { display: "none" } : {}}
-                    onClick={() => setRevealPhone(true)}
-                  >
-                    {"CLICK-TO-REVEAL"}
-                  </Typography>
-                  <a
-                    className={classes.a}
-                    href={"tel:+918122985883"}
-                    style={{
-                      display: `${revealPhone ? "block" : "none"}`,
-                    }}
-                  >
-                    <Typography variant="h5">{"+91 8122985883"}</Typography>
-                  </a>
-                </Typography>
-                <br />
-                <Typography variant="subtitle1">
-                  {"Email: "}
-                  <Typography
-                    variant="button"
-                    className={classes.clickToReveal}
-                    style={revealEmail ? { display: "none" } : {}}
-                    onClick={() => setRevealEmail(true)}
-                  >
-                    {"CLICK-TO-REVEAL"}
-                  </Typography>
-                  <a
-                    className={classes.a}
-                    href="mailto:ssuryarajan@gmail.com?subject=via%20Portfolio"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{
-                      fontSize: "1.25rem",
-                      display: `${revealEmail ? "block" : "none"}`,
-                    }}
-                  >
-                    <Typography variant="h5">
-                      {"ssuryarajan@gmail.com"}
-                    </Typography>
-                  </a>
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12} md={6} className={classes.skills}>
-                <Typography
-                  align="center"
-                  variant="h5"
-                  className={classes.skillsText}
-                ></Typography>
-                <br />
-                {skills.map((skill, idx) => (
-                  <Fragment key={idx}>
-                    <Typography variant="h6" style={{ fontWeight: "600" }}>
-                      <img
-                        src={`assets/img/${skill.icon}.svg`}
-                        alt={skill.label}
-                        style={{
-                          width: "1rem",
-                          marginRight: "1rem",
-                          filter: "invert(1)",
-                        }}
-                      />
-                      {skill.label}
-                    </Typography>
-                    <Typography variant="subtitle1" className={classes.chips}>
-                      {skill.tech.map((o, idx) => (
-                        <Chip
-                          key={idx}
-                          color="primary"
-                          label={o}
-                          variant="outlined"
-                          style={{ margin: ".2rem" }}
-                        />
-                      ))}
-                    </Typography>
-                  </Fragment>
-                ))}
-                <br />
-              </Grid>
-            </Grid>
-
-            <div className={classes.resumeDiv}>
-              <a
-                href="assets/Resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className={classes.a}
-              >
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  className={classes.resumeBtn}
+              <Typography>
+                <span className={classes.bio401}></span>
+                <a
+                  href="https://stackoverflow.com/users/8826642/thewellhopeerr"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.stackoverflow}
                 >
-                  {"Resume"}
-                </Button>
-              </a>
-            </div>
+                  {}
+                </a>
+                <span className={classes.bio402}></span>
+              </Typography>
+              <Typography className={classes.bio5}></Typography>
+            </Grid>
+          </Grid>
+
+          <Grid container className={classes.profileBox}>
+            <Grid item xs={12} md={4} className={classes.profile}>
+              <Typography
+                align="center"
+                variant="h5"
+                className={classes.profileText}
+                style={{ fontWeight: "600" }}
+              ></Typography>
+              <br />
+              <Typography variant="subtitle1">
+                <span style={{ marginRight: "2%", color: "#00f2ff" }}>
+                  <GiWorld />
+                </span>
+                {
+                  "Full Stack Developer, Web Developer, and Computer Science Engineer."
+                }
+              </Typography>
+              <br />
+              <Typography variant="subtitle1">
+                <span style={{ marginRight: "2%", color: "#51bf53" }}>
+                  <FaGraduationCap />
+                </span>
+                {
+                  "Bachelors in Computer Science and Engineering, Tamil Nadu, India."
+                }
+              </Typography>
+              <br />
+              <Typography variant="subtitle1">
+                <span style={{ marginRight: "2%", color: "#ef3b36" }}>
+                  <FaLaptopCode />
+                </span>
+                {"1+ years Industrial Experience"}
+              </Typography>
+
+              <br />
+              <hr className={classes.hr1} />
+              <br />
+
+              <Typography variant="subtitle1">{"Full Name: "}</Typography>
+              <Typography variant="h5" className={classes.a}>
+                {"Suryarajan S"}
+              </Typography>
+              <br />
+              <Typography variant="subtitle1">
+                {"Phone: "}
+                <Typography
+                  variant="button"
+                  className={classes.clickToReveal}
+                  style={revealPhone ? { display: "none" } : {}}
+                  onClick={() => setRevealPhone(true)}
+                >
+                  {"CLICK-TO-REVEAL"}
+                </Typography>
+                <a
+                  className={classes.a}
+                  href={"tel:+918122985883"}
+                  style={{
+                    display: `${revealPhone ? "block" : "none"}`,
+                  }}
+                >
+                  <Typography variant="h5">{"+91 8122985883"}</Typography>
+                </a>
+              </Typography>
+              <br />
+              <Typography variant="subtitle1">
+                {"Email: "}
+                <Typography
+                  variant="button"
+                  className={classes.clickToReveal}
+                  style={revealEmail ? { display: "none" } : {}}
+                  onClick={() => setRevealEmail(true)}
+                >
+                  {"CLICK-TO-REVEAL"}
+                </Typography>
+                <a
+                  className={classes.a}
+                  href="mailto:ssuryarajan@gmail.com?subject=via%20Portfolio"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    fontSize: "1.25rem",
+                    display: `${revealEmail ? "block" : "none"}`,
+                  }}
+                >
+                  <Typography variant="h5">
+                    {"ssuryarajan@gmail.com"}
+                  </Typography>
+                </a>
+              </Typography>
+            </Grid>
+
+            <Grid item xs={12} md={8} className={classes.skills}>
+              <Typography
+                align="center"
+                variant="h5"
+                className={classes.skillsText}
+              ></Typography>
+              <br />
+              {skills.map((skill, idx) => (
+                <div key={idx} className={classes.chipsDiv}>
+                  <Typography variant="h6" style={{ fontWeight: "600" }}>
+                    <img
+                      src={`assets/img/${skill.icon}.svg`}
+                      alt={skill.label}
+                      style={{
+                        width: "1rem",
+                        marginRight: "1rem",
+                        filter: "invert(1)",
+                      }}
+                    />
+                    {skill.label}
+                  </Typography>
+                  <Typography variant="subtitle1" className={classes.chips}>
+                    {skill.tech.map((o, idx) => (
+                      <Chip
+                        key={idx}
+                        color="primary"
+                        label={o}
+                        variant="outlined"
+                        className={classes.chip}
+                      />
+                    ))}
+                  </Typography>
+                </div>
+              ))}
+              <br />
+            </Grid>
+          </Grid>
+
+          <div className={classes.resumeDiv}>
+            <a
+              href="assets/Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className={classes.a}
+            >
+              <Button
+                color="primary"
+                variant="outlined"
+                className={classes.resumeBtn}
+              >
+                {"Resume"}
+              </Button>
+            </a>
           </div>
         </div>
       )}

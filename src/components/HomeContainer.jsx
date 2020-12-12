@@ -2,7 +2,6 @@ import React from "react";
 import { Avatar, makeStyles, Typography } from "@material-ui/core";
 import Typewriter from "typewriter-effect";
 import VisibilitySensor from "react-visibility-sensor";
-import Image from "react-bootstrap/Image";
 
 import SocialLinks from "./helperComponents/SocialLinks";
 
@@ -112,9 +111,6 @@ const HomeContainer = ({ refProp, scrollTo, refProps, setRefInView }) => {
         </div>
 
         <SocialLinks />
-        <div onClick={() => scrollTo(refProps.about)}>
-          <Image src="assets/img/mouse.gif" className={classes.mouse} />
-        </div>
       </div>
     </VisibilitySensor>
   );

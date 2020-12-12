@@ -20,7 +20,8 @@ import experience from "../info/experience";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "1rem 2rem",
+    padding: "3rem 2rem",
+    transition: "all .3s smooth",
     background: "#242a38",
   },
   experienceText: {
@@ -70,6 +71,13 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  chip: {
+    margin: ".2rem",
+    "&:hover": {
+      background: "#f8a736",
+      color: "#fff",
+    },
+  },
   expand: {
     transform: "rotate(0deg)",
     transition: theme.transitions.create("transform", {
@@ -96,132 +104,127 @@ const ExperienceContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .4s",
           }}
+          ref={refProp}
+          className={classes.root}
         >
-          <div ref={refProp} className={classes.root}>
-            <Typography
-              variant="h4"
-              className={classes.experienceText}
-            ></Typography>
-            <div className={classes.experience}>
-              <Timeline
-                align={`${isSmallDevice ? "left" : "alternate"}`}
-                style={{ padding: "6px 1px" }}
-              >
-                {experience.map((val, idx) => (
-                  <TimelineItem key={idx}>
-                    <TimelineSeparator>
-                      <TimelineDot
-                        className={classes.timelineDot}
-                        style={{
-                          background: `${
-                            val.endDate === "Present" ? "#f8a736" : "#bdbdbd"
-                          }`,
-                        }}
-                      >
-                        <FaLaptopCode className={classes.icons} />
-                      </TimelineDot>
-                      {idx + 1 < experience.length && <TimelineConnector />}
-                    </TimelineSeparator>
-                    <TimelineContent
+          <Typography
+            variant="h4"
+            className={classes.experienceText}
+          ></Typography>
+          <div className={classes.experience}>
+            <Timeline
+              align={`${isSmallDevice ? "left" : "alternate"}`}
+              style={{ padding: "6px 1px" }}
+            >
+              {experience.map((val, idx) => (
+                <TimelineItem key={idx}>
+                  <TimelineSeparator>
+                    <TimelineDot
+                      className={classes.timelineDot}
                       style={{
-                        textAlign: `${
-                          !isSmallDevice & (idx & 1) ? "right" : "left"
-                        }`,
-                        direction: `${
-                          !isSmallDevice & (idx & 1) ? "rtl" : "ltr"
+                        background: `${
+                          val.endDate === "Present" ? "#f8a736" : "#bdbdbd"
                         }`,
                       }}
                     >
-                      <Paper elevation={3} className={classes.paper}>
-                        <div className={classes.paperDiv}>
-                          <Typography
-                            variant="h6"
-                            style={{
-                              fontWeight: "600",
-                              fontSize: `${isSmallDevice ? "1rem" : "1.25rem"}`,
-                            }}
-                          >
-                            {val.title}
-                          </Typography>
-                          <Typography
-                            variant="subtitle2"
-                            style={{
-                              fontWeight: "300",
-                              fontSize: `${
-                                isSmallDevice ? ".8rem" : "0.875rem"
-                              }`,
-                            }}
-                          >{`${val.startDate} - ${val.endDate}`}</Typography>
-                          <Typography
-                            variant="subtitle1"
-                            style={{
-                              fontSize: `${
-                                isSmallDevice ? ".8rem" : "0.875rem"
-                              }`,
-                            }}
-                          >
-                            {val.company}
-                          </Typography>
-                          <Typography
-                            variant="subtitle1"
-                            style={{
-                              fontWeight: "300",
-                              display: `${isSmallDevice ? "none" : "block"}`,
-                            }}
-                          >
-                            {val.location}
-                          </Typography>
-                          <div
-                            style={{
-                              display: `${isSmallDevice ? "none" : "block"}`,
-                            }}
-                          >
-                            {val.tech.map((o, idx) => (
-                              <Chip
-                                key={idx}
-                                label={o}
-                                variant="outlined"
-                                style={{ margin: ".2rem" }}
-                              />
-                            ))}
-                          </div>
-                          <Collapse
-                            in={expanded !== -1 && expanded === idx}
-                            timeout="auto"
-                            unmountOnExit
-                            style={{ marginTop: ".5rem" }}
-                          >
-                            <Typography
-                              variant="body1"
-                              className={classes.collapseContent}
-                            >
-                              {val.descriptions.join(" ")}
-                            </Typography>
-                          </Collapse>
-                        </div>
-                        <div
-                          className={classes.expandButton}
-                          onClick={() =>
-                            setExpanded((prevState) =>
-                              prevState === idx ? -1 : idx
-                            )
-                          }
+                      <FaLaptopCode className={classes.icons} />
+                    </TimelineDot>
+                    {idx + 1 < experience.length && <TimelineConnector />}
+                  </TimelineSeparator>
+                  <TimelineContent
+                    style={{
+                      textAlign: `${
+                        !isSmallDevice & (idx & 1) ? "right" : "left"
+                      }`,
+                      direction: `${
+                        !isSmallDevice & (idx & 1) ? "rtl" : "ltr"
+                      }`,
+                    }}
+                  >
+                    <Paper elevation={3} className={classes.paper}>
+                      <div className={classes.paperDiv}>
+                        <Typography
+                          variant="h6"
+                          style={{
+                            fontWeight: "600",
+                            fontSize: `${isSmallDevice ? "1rem" : "1.25rem"}`,
+                          }}
                         >
-                          <ExpandMoreIcon
-                            className={clsx(classes.expand, {
-                              [classes.expandOpen]:
-                                expanded !== -1 && expanded === idx,
-                            })}
-                          />
+                          {val.title}
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          style={{
+                            fontWeight: "300",
+                            fontSize: `${isSmallDevice ? ".8rem" : "0.875rem"}`,
+                          }}
+                        >{`${val.startDate} - ${val.endDate}`}</Typography>
+                        <Typography
+                          variant="subtitle1"
+                          style={{
+                            fontSize: `${isSmallDevice ? ".8rem" : "0.875rem"}`,
+                          }}
+                        >
+                          {val.company}
+                        </Typography>
+                        <Typography
+                          variant="subtitle1"
+                          style={{
+                            fontWeight: "300",
+                            display: `${isSmallDevice ? "none" : "block"}`,
+                          }}
+                        >
+                          {val.location}
+                        </Typography>
+                        <div
+                          style={{
+                            display: `${isSmallDevice ? "none" : "block"}`,
+                          }}
+                        >
+                          {val.tech.map((o, idx) => (
+                            <Chip
+                              key={idx}
+                              label={o}
+                              variant="outlined"
+                              className={classes.chip}
+                            />
+                          ))}
                         </div>
-                      </Paper>
-                    </TimelineContent>
-                  </TimelineItem>
-                ))}
-              </Timeline>
-            </div>
+                        <Collapse
+                          in={expanded !== -1 && expanded === idx}
+                          timeout="auto"
+                          unmountOnExit
+                          style={{ marginTop: ".5rem" }}
+                        >
+                          <Typography
+                            variant="body1"
+                            className={classes.collapseContent}
+                          >
+                            {val.descriptions.join(" ")}
+                          </Typography>
+                        </Collapse>
+                      </div>
+                      <div
+                        className={classes.expandButton}
+                        onClick={() =>
+                          setExpanded((prevState) =>
+                            prevState === idx ? -1 : idx
+                          )
+                        }
+                      >
+                        <ExpandMoreIcon
+                          className={clsx(classes.expand, {
+                            [classes.expandOpen]:
+                              expanded !== -1 && expanded === idx,
+                          })}
+                        />
+                      </div>
+                    </Paper>
+                  </TimelineContent>
+                </TimelineItem>
+              ))}
+            </Timeline>
           </div>
         </div>
       )}

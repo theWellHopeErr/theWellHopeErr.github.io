@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       height: "1.5rem",
     },
     "&:hover": {
-      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+      boxShadow: "0px 0px 10px 2px #41ffc9ab", // f8a736
     },
   },
 }));
@@ -35,26 +35,32 @@ const SocialLinks = () => {
 
   const social = [
     {
+      name: "Github",
       href: "https://github.com/theWellHopeErr",
       icon: <FaGithub className={classes.icon} />,
     },
     {
+      name: "StackOverflow",
       href: "https://stackoverflow.com/users/8826642",
       icon: <FaStackOverflow className={classes.icon} />,
     },
     {
+      name: "LinkedIn",
       href: "https://www.linkedin.com/in/theWellHopeErr",
       icon: <FaLinkedin className={classes.icon} />,
     },
     {
+      name: "Twitter",
       href: "https://twitter.com/theWellHopeErr",
       icon: <FaTwitter className={classes.icon} />,
     },
     {
+      name: "CodeChef",
       href: "https://www.codechef.com/users/theWellHopeErr",
       icon: <SiCodechef className={classes.icon} />,
     },
     {
+      name: "Mail",
       href: "mailto:ssuryarajan@gmail.com?subject=via%20Portfolio",
       icon: <SiGmail className={classes.icon} />,
     },
@@ -64,9 +70,7 @@ const SocialLinks = () => {
       {social.map((s, idx) => (
         <Grid item key={idx} xs={4} sm={3} md={2} xl={1}>
           <a href={s.href} target="_blank" rel="noreferrer">
-            {/* <span className={classes.icons}> */}
-            {s.icon}
-            {/* </span> */}
+            <span title={s.name}>{s.icon}</span>
           </a>
         </Grid>
       ))}

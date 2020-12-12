@@ -18,8 +18,9 @@ import projects from "../info/projects";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "1rem 2rem",
-    background: "#242a38",
+    padding: "3rem 2rem",
+    transition: "all .3s smooth",
+    background: "#2f3950",
   },
   projectsText: {
     fontWeight: "600",
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     transitionDuration: ".3s",
     backfaceVisibility: "hidden",
     "&:hover": {
-      boxShadow: "0px 0px 25px 2px #f8a736", // 41ffc9ab
+      // boxShadow: "0px 0px 25px 2px #f8a736", // 41ffc9ab
       filter: "grayscale(0)",
     },
   },
@@ -61,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
     margin: ".2rem",
     color: "#f8a736",
     fontWeight: "600",
+    "&:hover": {
+      background: "#f8a736",
+      color: "#fff",
+    },
   },
   expandButton: {
     background: "#f8a736",
@@ -94,120 +99,112 @@ const ProjectsContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .4s",
           }}
+          ref={refProp}
+          className={classes.root}
         >
-          <div ref={refProp} className={classes.root}>
-            <Typography
-              variant="h4"
-              className={classes.projectsText}
-            ></Typography>
-            <Grid className={classes.projects} container>
-              {projects.map((project, idx) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  xl={3}
-                  key={idx}
-                  style={{ textAlign: "-webkit-center" }}
-                >
-                  <Card variant="outlined" raised className={classes.card}>
-                    <CardContent>
-                      <Typography variant="h5" style={{ fontWeight: "600" }}>
-                        {project.title}
+          <Typography
+            variant="h4"
+            className={classes.projectsText}
+          ></Typography>
+          <Grid className={classes.projects} container>
+            {projects.map((project, idx) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                xl={3}
+                key={idx}
+                style={{ textAlign: "-webkit-center" }}
+              >
+                <Card variant="outlined" raised className={classes.card}>
+                  <CardContent>
+                    <Typography variant="h5" style={{ fontWeight: "600" }}>
+                      {project.title}
+                    </Typography>
+                    <Typography variant="subtitle1">{project.date}</Typography>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={classes.a}
+                    >
+                      <CardMedia
+                        className={classes.media}
+                        image={project.img}
+                        title={project.title}
+                      />
+                    </a>
+                    {project.stack.map((o, idx) => (
+                      <Chip
+                        key={idx}
+                        label={o}
+                        variant="outlined"
+                        className={classes.chip}
+                      />
+                    ))}
+                    <br />
+                    <IconButton
+                      className={classes.expandButton}
+                      onClick={() =>
+                        setExpanded((prevState) =>
+                          prevState === idx ? -1 : idx
+                        )
+                      }
+                    >
+                      <ExpandMoreIcon
+                        className={clsx(classes.expand, {
+                          [classes.expandOpen]:
+                            expanded !== -1 && expanded === idx,
+                        })}
+                      />
+                    </IconButton>
+                  </CardContent>
+                  <Collapse
+                    in={expanded !== -1 && expanded === idx}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <CardContent style={{ paddingTop: "0" }}>
+                      <Typography variant="body1" style={{ fontWeight: "300" }}>
+                        {project.description}
                       </Typography>
-                      <Typography variant="subtitle1">
-                        {project.date}
-                      </Typography>
+                    </CardContent>
+                  </Collapse>
+
+                  <CardActions style={{ justifyContent: "center" }}>
+                    {project.code && (
                       <a
-                        href={project.link}
+                        href={project.code}
                         target="_blank"
                         rel="noreferrer"
                         className={classes.a}
                       >
-                        <CardMedia
-                          className={classes.media}
-                          image={project.img}
-                          title={project.title}
-                        />
+                        <Button style={{ background: "#f8a736" }}>
+                          <Typography variant="subtitle1">
+                            {"See Code"}
+                          </Typography>
+                        </Button>
                       </a>
-                      {project.stack.map((o, idx) => (
-                        <Chip
-                          key={idx}
-                          label={o}
-                          variant="outlined"
-                          className={classes.chip}
-                        />
-                      ))}
-                      <br />
-                      <IconButton
-                        className={classes.expandButton}
-                        onClick={() =>
-                          setExpanded((prevState) =>
-                            prevState === idx ? -1 : idx
-                          )
-                        }
+                    )}
+                    {project.site && (
+                      <a
+                        href={project.site}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={classes.a}
                       >
-                        <ExpandMoreIcon
-                          className={clsx(classes.expand, {
-                            [classes.expandOpen]:
-                              expanded !== -1 && expanded === idx,
-                          })}
-                        />
-                      </IconButton>
-                    </CardContent>
-                    <Collapse
-                      in={expanded !== -1 && expanded === idx}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      <CardContent style={{ paddingTop: "0" }}>
-                        <Typography
-                          variant="body1"
-                          style={{ fontWeight: "300" }}
-                        >
-                          {project.description}
-                        </Typography>
-                      </CardContent>
-                    </Collapse>
-
-                    <CardActions style={{ justifyContent: "center" }}>
-                      {project.code && (
-                        <a
-                          href={project.code}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={classes.a}
-                        >
-                          <Button style={{ background: "#f8a736" }}>
-                            <Typography variant="subtitle1">
-                              {"See Code"}
-                            </Typography>
-                          </Button>
-                        </a>
-                      )}
-                      {project.site && (
-                        <a
-                          href={project.site}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={classes.a}
-                        >
-                          <Button style={{ background: "#f8a736" }}>
-                            <Typography variant="subtitle1">
-                              {"Live"}
-                            </Typography>
-                          </Button>
-                        </a>
-                      )}
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </div>
+                        <Button style={{ background: "#f8a736" }}>
+                          <Typography variant="subtitle1">{"Live"}</Typography>
+                        </Button>
+                      </a>
+                    )}
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </div>
       )}
     </VisibilitySensor>

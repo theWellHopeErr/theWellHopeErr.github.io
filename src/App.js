@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./App.css";
 import {
   withStyles,
@@ -9,7 +9,6 @@ import {
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import MainContainer from "./components/MainContainer";
 import Scroll from "./components/helperComponents/ScrollToTop";
-import SplashScreen from "./components/helperComponents/SplashScreen";
 
 const breakpoints = createBreakpoints({});
 
@@ -65,24 +64,12 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles();
-  const [screen, setScreen] = useState("splash");
-  const timeoutRef = useRef(null);
-
-  useEffect(() => {
-    if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);
-
-    timeoutRef.current = setTimeout(() => {
-      timeoutRef.current = null;
-      setScreen("main");
-    }, 2000);
-  }, []);
 
   return (
     <MuiThemeProvider theme={theme}>
       <div className={classes.root}>
-        {screen === "splash" ? <SplashScreen /> : <MainContainer />}
+        <MainContainer />
       </div>
-      {/* <Footer /> */}
       <Scroll />
     </MuiThemeProvider>
   );

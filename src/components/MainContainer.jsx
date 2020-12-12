@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core";
 import HomeContainer from "./HomeContainer";
 import AboutContainer from "./AboutContainer";
 import ExperienceContainer from "./ExperienceContainer";
-import EducationContainer from "./EducationContainer";
+// import EducationContainer from "./EducationContainer";
 import ContactContainer from "./ContactContainer";
 import ProjectsContainer from "./ProjectsContainer";
 import NavBar from "./helperComponents/NavBar";
@@ -61,13 +61,14 @@ const MainContainer = () => {
           refProp={experienceRef}
           setRefInView={setRefInView}
         />
-        <EducationContainer
-          refProp={educationRef}
-          setRefInView={setRefInView}
-        />
         <ProjectsContainer refProp={projectsRef} setRefInView={setRefInView} />
+        {/* <div className={classes.div}>
+          <EducationContainer
+            refProp={educationRef}
+            setRefInView={setRefInView}
+          />
+        </div> */}
         <ContactContainer refProp={contactRef} setRefInView={setRefInView} />
-
         <Footer />
       </div>
     </div>

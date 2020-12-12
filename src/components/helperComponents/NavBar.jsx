@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     zIndex: "1",
     opacity: "0",
-    transition: "all .3s",
+    transition: "all .3s smooth",
     [theme.breakpoints.down("sm")]: {
       opacity: "-1",
     },
@@ -44,7 +44,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
   const homeTextRef = useRef(null);
   const aboutTextRef = useRef(null);
   const experienceTextRef = useRef(null);
-  const educationTextRef = useRef(null);
+  // const educationTextRef = useRef(null);
   const projectsTextRef = useRef(null);
   const contactTextRef = useRef(null);
 
@@ -73,7 +73,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
       home: homeTextRef,
       about: aboutTextRef,
       experience: experienceTextRef,
-      education: educationTextRef,
+      // education: educationTextRef,
       projects: projectsTextRef,
       contact: contactTextRef,
     };
@@ -84,7 +84,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
     homeTextRef.current.style.borderBottom = "0";
     aboutTextRef.current.style.borderBottom = "0";
     experienceTextRef.current.style.borderBottom = "0";
-    educationTextRef.current.style.borderBottom = "0";
+    // educationTextRef.current.style.borderBottom = "0";
     projectsTextRef.current.style.borderBottom = "0";
     contactTextRef.current.style.borderBottom = "0";
     if (ref) ref.current.style.borderBottom = "2px solid";
@@ -129,7 +129,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
                 {"Experience"}
               </Typography>
             </div>
-            <div
+            {/* <div
               onClick={() => {
                 scrollTo(refProps.education);
                 setActive(educationTextRef);
@@ -139,7 +139,7 @@ const NavBar = ({ refProps, refInView, scrollTo }) => {
               <Typography className={classes.menuItem} ref={educationTextRef}>
                 {"Education"}
               </Typography>
-            </div>
+            </div> */}
             <div
               onClick={() => {
                 scrollTo(refProps.projects);

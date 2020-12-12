@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#242a38",
     borderRadius: "50%",
     "&:hover": {
-      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+      boxShadow: "0px 0px 10px 2px #41ffc9ab", // f8a736
     },
   },
   scrollIcon: {

@@ -11,8 +11,9 @@ const ipapi = require("ipapi.co");
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "1rem 2rem",
-    background: "#2f3950",
+    padding: "3rem 2rem",
+    transition: "all .3s smooth",
+    background: "#242a38",
   },
   contactText: {
     fontWeight: "600",
@@ -22,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitleText: {
     fontWeight: "600",
-    "&::before": {
-      content: `"Say Hi to Me"`,
+    [theme.breakpoints.up("sm")]: {
+      "&::before": {
+        content: `"Got a question?"`,
+      },
     },
   },
   sideText: {
@@ -35,9 +38,8 @@ const useStyles = makeStyles((theme) => ({
   contactMsg: {
     [theme.breakpoints.up("sm")]: {
       width: "40%",
-      padding: "1rem 5.2rem !important",
+      padding: "5.2rem !important",
     },
-    alignSelf: "center",
   },
   formDiv: {
     flex: 1,
@@ -92,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#ccece6",
       background: "#242a38",
-      boxShadow: "0px 0px 25px 2px #41ffc9ab", // f8a736
+      boxShadow: "0px 0px 10px 2px #41ffc9ab", // f8a736
     },
   },
   error: {
@@ -224,110 +226,38 @@ const ContactContainer = ({ refProp, setRefInView }) => {
         <div
           style={{
             opacity: `${isVisible ? "1" : "0.25"}`,
-            transition: "all .4s",
           }}
+          ref={refProp}
+          className={classes.root}
         >
-          <div ref={refProp} className={classes.root}>
-            <Typography
-              variant="h4"
-              className={classes.contactText}
-            ></Typography>
-            <div className={classes.contact}>
-              <Grid container spacing={3}>
-                <Grid item className={classes.contactMsg}>
-                  <AiFillWechat style={{ fontSize: "7rem" }} />
-                  <Typography
-                    variant="h6"
-                    className={classes.sideText}
-                  ></Typography>
-                </Grid>
-                <Grid item className={classes.formDiv}>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    className={classes.subtitleText}
-                  ></Typography>
-                  <form onSubmit={() => console.log("123")}>
-                    <div className={classes.nameEmailDiv}>
-                      <div className={classes.nameInput}>
-                        <TextField
-                          label="Name"
-                          variant="outlined"
-                          color="primary"
-                          required
-                          value={name}
-                          onChange={(e) => {
-                            setName(e.target.value);
-                            if (name) setNameError("");
-                          }}
-                          InputLabelProps={{
-                            style: {
-                              color: "#ccece6",
-                            },
-                          }}
-                          InputProps={{
-                            classes: {
-                              root: classes.cssOutlinedInput,
-                              focused: classes.cssFocused,
-                              notchedOutline: classes.notchedOutline,
-                            },
-                          }}
-                        />
-                        {nameError && (
-                          <label className={classes.error}>{nameError}</label>
-                        )}
-                      </div>
-                      <div style={{ padding: "1rem" }} />
-                      <div className={classes.emailInput}>
-                        <TextField
-                          label="Email"
-                          variant="outlined"
-                          color="primary"
-                          type="email"
-                          value={email}
-                          onChange={(e) => {
-                            setEmail(e.target.value);
-                            if (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{1,}$/.test(email))
-                              setEmailError("");
-                            else
-                              setEmailError("This does not look like an email");
-                          }}
-                          required
-                          InputLabelProps={{
-                            style: {
-                              color: "#ccece6",
-                            },
-                          }}
-                          InputProps={{
-                            classes: {
-                              root: classes.cssOutlinedInput,
-                              focused: classes.cssFocused,
-                              notchedOutline: classes.notchedOutline,
-                            },
-                          }}
-                        />
-                        {emailError && (
-                          <label className={classes.error}>{emailError}</label>
-                        )}
-                      </div>
-                    </div>
-                    <div style={{ padding: "1rem" }} />
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
+          <Typography variant="h4" className={classes.contactText}></Typography>
+          <div className={classes.contact}>
+            <Grid container spacing={3}>
+              <Grid item className={classes.contactMsg}>
+                <AiFillWechat style={{ fontSize: "7rem" }} />
+                <Typography
+                  variant="h6"
+                  className={classes.sideText}
+                ></Typography>
+              </Grid>
+              <Grid item className={classes.formDiv}>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  className={classes.subtitleText}
+                ></Typography>
+                <form onSubmit={() => console.log("123")}>
+                  <div className={classes.nameEmailDiv}>
+                    <div className={classes.nameInput}>
                       <TextField
-                        label="Subject"
+                        label="Name"
                         variant="outlined"
                         color="primary"
                         required
-                        fullWidth
-                        value={subject}
+                        value={name}
                         onChange={(e) => {
-                          setSubject(e.target.value);
-                          if (subject) setSubjectError("");
+                          setName(e.target.value);
+                          if (name) setNameError("");
                         }}
                         InputLabelProps={{
                           style: {
@@ -342,33 +272,26 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                           },
                         }}
                       />
-                      {subjectError && (
-                        <label className={classes.error}>{subjectError}</label>
+                      {nameError && (
+                        <label className={classes.error}>{nameError}</label>
                       )}
                     </div>
-
                     <div style={{ padding: "1rem" }} />
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
+                    <div className={classes.emailInput}>
                       <TextField
-                        label="Message"
-                        multiline
-                        required
-                        fullWidth
-                        rows={10}
-                        value={message}
-                        onChange={(e) => {
-                          setMessage(e.target.value);
-                          if (message) setMessageError("");
-                        }}
+                        label="Email"
                         variant="outlined"
-                        style={{
-                          color: "#ccece6",
+                        color="primary"
+                        type="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{1,}$/.test(email))
+                            setEmailError("");
+                          else
+                            setEmailError("This does not look like an email");
                         }}
+                        required
                         InputLabelProps={{
                           style: {
                             color: "#ccece6",
@@ -382,29 +305,104 @@ const ContactContainer = ({ refProp, setRefInView }) => {
                           },
                         }}
                       />
-                      {messageError && (
-                        <label className={classes.error}>{messageError}</label>
+                      {emailError && (
+                        <label className={classes.error}>{emailError}</label>
                       )}
                     </div>
-                    <div
-                      className={classes.submitBtn}
-                      style={
-                        isSubmitButtonDisabled
-                          ? {
-                              color: "#ccece6",
-                              background: "#242a38",
-                              cursor: "not-allowed",
-                            }
-                          : {}
-                      }
-                      onClick={!isSubmitButtonDisabled ? handleSubmit : null}
-                    >
-                      {mailStatus.message}
-                    </div>
-                  </form>
-                </Grid>
+                  </div>
+                  <div style={{ padding: "1rem" }} />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      label="Subject"
+                      variant="outlined"
+                      color="primary"
+                      required
+                      fullWidth
+                      value={subject}
+                      onChange={(e) => {
+                        setSubject(e.target.value);
+                        if (subject) setSubjectError("");
+                      }}
+                      InputLabelProps={{
+                        style: {
+                          color: "#ccece6",
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                      }}
+                    />
+                    {subjectError && (
+                      <label className={classes.error}>{subjectError}</label>
+                    )}
+                  </div>
+
+                  <div style={{ padding: "1rem" }} />
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <TextField
+                      label="Message"
+                      multiline
+                      required
+                      fullWidth
+                      rows={10}
+                      value={message}
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                        if (message) setMessageError("");
+                      }}
+                      variant="outlined"
+                      style={{
+                        color: "#ccece6",
+                      }}
+                      InputLabelProps={{
+                        style: {
+                          color: "#ccece6",
+                        },
+                      }}
+                      InputProps={{
+                        classes: {
+                          root: classes.cssOutlinedInput,
+                          focused: classes.cssFocused,
+                          notchedOutline: classes.notchedOutline,
+                        },
+                      }}
+                    />
+                    {messageError && (
+                      <label className={classes.error}>{messageError}</label>
+                    )}
+                  </div>
+                  <div
+                    className={classes.submitBtn}
+                    style={
+                      isSubmitButtonDisabled
+                        ? {
+                            color: "#ccece6",
+                            background: "#242a38",
+                            cursor: "not-allowed",
+                          }
+                        : {}
+                    }
+                    onClick={!isSubmitButtonDisabled ? handleSubmit : null}
+                  >
+                    {mailStatus.message}
+                  </div>
+                </form>
               </Grid>
-            </div>
+            </Grid>
           </div>
         </div>
       )}
