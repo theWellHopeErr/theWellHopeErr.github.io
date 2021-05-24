@@ -326,27 +326,6 @@ const AboutContainer = ({ refProp, setRefInView }) => {
               </Typography>
               <br />
               <Typography variant="subtitle1">
-                {"Phone: "}
-                <Typography
-                  variant="button"
-                  className={classes.clickToReveal}
-                  style={revealPhone ? { display: "none" } : {}}
-                  onClick={() => setRevealPhone(true)}
-                >
-                  {"CLICK-TO-REVEAL"}
-                </Typography>
-                <a
-                  className={classes.a}
-                  href={"tel:+918122985883"}
-                  style={{
-                    display: `${revealPhone ? "block" : "none"}`,
-                  }}
-                >
-                  <Typography variant="h5">{"+91 8122985883"}</Typography>
-                </a>
-              </Typography>
-              <br />
-              <Typography variant="subtitle1">
                 {"Email: "}
                 <Typography
                   variant="button"
