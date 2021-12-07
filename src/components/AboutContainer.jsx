@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   bio102: {
     fontFamily: "Montserrat",
     "&::before": {
-      content: `". I am currently pursuing my Bachelors in the stream of Computer Science and Engineering. Since joining the course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."`,
+      content: `". I am a Computer Science Engineer. Since joining my bachelor's course, I have greatly enhanced my programming skills by solving various problems and competing in competitions."`,
     },
   },
   bio2: {
