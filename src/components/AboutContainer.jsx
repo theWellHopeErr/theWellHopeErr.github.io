@@ -283,7 +283,7 @@ const AboutContainer = ({ refProp, setRefInView }) => {
           </Grid>
 
           <Grid container className={classes.profileBox}>
-            <Grid item xs={12} md={4} className={classes.profile}>
+            <Grid item xs={12} md={6} className={classes.profile}>
               <Typography
                 align="center"
                 variant="h5"
@@ -352,7 +352,7 @@ const AboutContainer = ({ refProp, setRefInView }) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={12} md={8} className={classes.skills}>
+            <Grid item xs={12} md={6} className={classes.skills}>
               <Typography
                 align="center"
                 variant="h5"
