@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bio2: {
     fontFamily: "Montserrat",
+    
     marginBottom: "1rem",
     "&::before": {
       content: `"I am very excited about the advances of Artificial Intelligence in today's technology and wish to learn a lot about AI and ML."`,
