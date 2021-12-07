@@ -201,7 +201,7 @@ const ContactContainer = ({ refProp, setRefInView }) => {
             setMailStatus(() => {
               return {
                 color: "#ff0800",
-                message: "Message was not sent... Try again later",
+                message: "Message Sent!",
               };
             });
             if (timeoutRef.current !== null) clearTimeout(timeoutRef.current);

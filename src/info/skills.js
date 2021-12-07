@@ -1,32 +1,27 @@
 const skills = [
   {
     label: "Programming Languages",
-    tech: ["JavaScript", "Python", "TypeScript", "C++"],
+    tech: ["Python", "C++"],
     icon: "programming",
   },
   {
     label: "Front-end Technologies",
-    tech: ["React", "Redux", "Electron JS", "VanillaJS", "JQuery", "Bootstrap"],
+    tech: ["React", "Redux", "Angular", "Flutter"],
     icon: "frontend",
   },
   {
     label: "Back-end Technologies",
-    tech: ["Node.js", "Express.js", "Nest", "Flask"],
+    tech: ["Node.js", "Express.js", "Nest"],
     icon: "backend",
   },
   {
     label: "Database",
-    tech: ["PostgreSQL", "MongoDB", "MySQL"],
+    tech: ["PostgreSQL", "MongoDB"],
     icon: "database",
   },
   {
-    label: "Artificial Intelligence & Machine Learning",
-    tech: ["Tensorflow", "Keras", "OpenCV"],
-    icon: "ai",
-  },
-  {
     label: "Versioning and other tools",
-    tech: ["Git", "Docker", "Nx Workspace", "Cypress.io"],
+    tech: ["Git", "Docker", "Cypress.io"],
     icon: "versioning",
   },
 ];

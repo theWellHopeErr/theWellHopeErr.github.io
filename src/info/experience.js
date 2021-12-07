@@ -1,5 +1,15 @@
 const experience = [
   {
+    title: "Trainee - SAP Techno-Functional Consultant",
+    company: "Kaar Technologies",
+    location: "Chennai, Tamil Nadu, India",
+    descriptions: [
+      "Undergoing Training. Developed training projects using Angular, Node JS, Flutter, and SAP tools",
+    ],
+    tech: ["SAP", "Angular", "Flutter", "Node"],
+    startDate: "March 2021",
+    endDate: "Present",
+  },{
     title: "Full Stack Developer Intern",
     company: "Rapid Acceleration Partners",
     location: "Chennai, Tamil Nadu, India",

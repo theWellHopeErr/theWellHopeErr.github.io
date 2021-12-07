@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
   },
   bio2: {
     fontFamily: "Montserrat",
-    
     marginBottom: "1rem",
     "&::before": {
       content: `"I am very excited about the advances of Artificial Intelligence in today's technology and wish to learn a lot about AI and ML."`,
@@ -63,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem",
     fontFamily: "Montserrat",
     "&::before": {
-      content: `"I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my interns, I had to learn new libraries and frameworks used in their companies, and I was able to grasp those concepts quickly and work productively. "`,
+      content: `"I started with web development in my first year, and I have improved my skills in application development and problem-solving by working on various projects and internships. In all my internships, I had to learn new libraries and frameworks that were used in their companies, and I was able to grasp those concepts quickly and work productively. "`,
     },
   },
   bio302: {
@@ -71,21 +70,21 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Montserrat",
     [theme.breakpoints.up("sm")]: {
       "&::before": {
-        content: `"I have ~2 years of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "`,
+        content: `"I have ~1 year of experience working in React, Node JS, and other versioning tools like Git, Heroku, and Docker. "`,
       },
     },
   },
   bio401: {
     fontFamily: "Montserrat",
     "&::before": {
-      content: `"I regularly contribute to "`,
+      content: `"I answer questions in  "`,
     },
   },
   bio402: {
     fontFamily: "Montserrat",
     marginBottom: "1rem",
     "&::before": {
-      content: `" sharing my knowledge with those in need in the tech community. I recently crossed 1000 reputation points and ranked in the top 0.26% for that month."`,
+      content: `" sharing my knowledge with those in need in the tech community."`,
     },
   },
   bio5: {
@@ -221,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
 
 const AboutContainer = ({ refProp, setRefInView }) => {
   const classes = useStyles();
-  const [revealPhone, setRevealPhone] = useState(false);
+  // const [revealPhone, setRevealPhone] = useState(false);
   const [revealEmail, setRevealEmail] = useState(false);
   return (
     <VisibilitySensor
@@ -314,7 +313,7 @@ const AboutContainer = ({ refProp, setRefInView }) => {
                 <span style={{ marginRight: "2%", color: "#ef3b36" }}>
                   <FaLaptopCode />
                 </span>
-                {"1+ years Industrial Experience"}
+                {"~1 year Experience"}
               </Typography>
 
               <br />
